@@ -4,7 +4,13 @@ import json
 import time
 
 def scrape_data():
-    driver = webdriver.Firefox()
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-ssl-errors=yes')
+    options.add_argument('--ignore-certificate-errors')
+    driver = webdriver.Remote(
+    command_executor='http://localhost:4444/wd/hub',
+    options=options
+    )
     driver.get("https://mlh.io/seasons/2024/events")
     links = driver.find_elements(By.CLASS_NAME, "event-link") # Fetching links of hackathon websites
     images = driver.find_elements(By.CSS_SELECTOR, ".image-wrap img") # Fetching images of hackathons
