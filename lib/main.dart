@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
     wdth = MediaQuery.of(context).size.width;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Theme.of(context).primaryColor,
+      systemNavigationBarColor: Colors.transparent,
       statusBarColor: Colors.transparent,
       statusBarBrightness: Theme.of(context).brightness,
       statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
