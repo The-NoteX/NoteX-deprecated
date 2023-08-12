@@ -5,13 +5,24 @@ import 'package:firebase_storage/firebase_storage.dart';
 Future<String> uploadPdf(String childName, String filePath) async {
   final storageRef = FirebaseStorage.instance.ref();
 
-  final mountainsRef = storageRef.child("Notes");
+  try {
+    final mountainsRef = storageRef.child("Notes");
 
-  File file = File(filePath);
+    File file = File(filePath);
 
-  await mountainsRef.putFile(file);
+    await mountainsRef.putFile(file);
 
-  return "true";
+    final url =
+        await FirebaseStorage.instance.ref().child('Notes').getDownloadURL();
+
+    firestore.collection("users").doc("pdf").set({
+      "pdfurl": url,
+    });
+
+    return "true";
+  } catch (e) {
+    return e.toString();
+  }
 }
 
 Future<String?> pickFiles() async {
@@ -25,5 +36,5 @@ Future<String?> pickFiles() async {
 
     return filePath;
   }
-  return null;
+  return "done";
 }

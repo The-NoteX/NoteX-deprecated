@@ -12,7 +12,7 @@ class NextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: wdth * 0.2),
+      padding: EdgeInsets.symmetric(horizontal: wdth * 0.23),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.black,
@@ -27,7 +27,7 @@ class NextButton extends StatelessWidget {
             child: Text(
               "Next",
               style: GoogleFonts.manrope(
-                fontSize: 27,
+                fontSize: hght * 0.04,
                 color: Colors.white,
                 fontWeight: FontWeight.w400,
               ),

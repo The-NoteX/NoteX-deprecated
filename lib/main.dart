@@ -1,38 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:notex/home.dart';
-import 'utils/constants.dart';
+import 'package:notex/navigation.dart';
+import 'package:notex/utils/constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  timeDilation = 1;
+  await Firebase.initializeApp();
+  runApp(const MainApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     hght = MediaQuery.of(context).size.height;
     wdth = MediaQuery.of(context).size.width;
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent,
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Theme.of(context).brightness,
-      statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
-          ? Brightness.light
-          : Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.white,
+        systemNavigationBarColor: Color.fromARGB(255, 0, 0, 0),
+      ),
+    );
 
     return const MaterialApp(
+      home: Navigation(),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
     );
   }
 }
