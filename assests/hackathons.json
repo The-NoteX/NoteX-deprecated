@@ -1,0 +1,402 @@
+[
+    {
+        "name": "statusCode 0",
+        "link": "https://hackathon.iiitkalyani.ac.in/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/657/thumb/Backsplash_300.png?1688131132",
+        "date": "AUG 12TH - 13TH",
+        "location": "Kolkata, West Bengal",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack the 6ix",
+        "link": "https://hackthe6ix.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/643/thumb/ht6-2023-backsplash.png?1687287907",
+        "date": "AUG 18TH - 20TH",
+        "location": "Toronto, Canada",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Web3Apps",
+        "link": "https://organize.mlh.io/participants/events/9906-web3apps",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/662/thumb/Event_Hero_Image.png?1689607983",
+        "date": "AUG 25TH - 27TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "Hack the Classroom",
+        "link": "https://organize.mlh.io/participants/events/10002-hack-the-classroom",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/676/thumb/Event_Hero_Image.jpg?1689663210",
+        "date": "SEP 1ST - 3RD",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "Global Hack Week: Web3",
+        "link": "https://organize.mlh.io/participants/events/9872-global-hack-week-web3",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/653/thumb/Sept-generic_IG.png?1687803329",
+        "date": "SEP 4TH - 11TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "HackDuke: Code for Good",
+        "link": "https://2023.hackduke.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/665/thumb/Frame_30.png?1689689730",
+        "date": "SEP 8TH - 10TH",
+        "location": "Durham, North Carolina",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "PennApps",
+        "link": "https://2023f.pennapps.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/636/thumb/Backsplash__1_.png?1687269412",
+        "date": "SEP 8TH - 10TH",
+        "location": "Philadelphia, Pennsylvania",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack the North",
+        "link": "https://hackthenorth.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/666/thumb/Banner_-_SquareHTN2023.png?1687877641",
+        "date": "SEP 15TH - 17TH",
+        "location": "Waterloo, Canada",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HopHacks",
+        "link": "https://www.hophacks.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/670/thumb/Hophacks-backsplash_2.0.png?1688652948",
+        "date": "SEP 15TH - 17TH",
+        "location": "Baltimore , Maryland",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "ShellHacks",
+        "link": "https://shellhacks.net/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/641/thumb/Backsplash_%283%29.png?1687284286",
+        "date": "SEP 15TH - 17TH",
+        "location": "Miami, Florida",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "TechTogether Online",
+        "link": "https://organize.mlh.io/participants/events/10003-techtogether-online",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/677/thumb/Event_Hero_Image.jpg?1689692406",
+        "date": "SEP 15TH - 17TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "VTHacks 11",
+        "link": "https://vthacks.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/667/thumb/backsplash.png?1687888462",
+        "date": "SEP 15TH - 17TH",
+        "location": "Blacksburg, Virginia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackSMU",
+        "link": "https://hacksmu.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/635/thumb/BackSplash_300x300.png?1686945285",
+        "date": "SEP 16TH - 17TH",
+        "location": "Dallas, Texas",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackRice",
+        "link": "https://hack.rice.edu/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/644/thumb/ricebacksplash.png?1687288318",
+        "date": "SEP 22ND - 24TH",
+        "location": "Houston, Texas",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "TransportHacks",
+        "link": "https://organize.mlh.io/participants/events/10004-transporthacks",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/678/thumb/Event_Hero_Image.jpg?1689663330",
+        "date": "SEP 22ND - 24TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "DivHacks",
+        "link": "https://columbiadivhacks.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/669/thumb/MLHbacksplasj_%281%29.png?1687889284",
+        "date": "SEP 23RD - 24TH",
+        "location": "New York City, New York",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack The Nest",
+        "link": "https://www.hackthenest.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/646/thumb/4.png?1688583641",
+        "date": "SEP 23RD - 24TH",
+        "location": "Sterling, Virginia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HACKUIOWA",
+        "link": "https://hack.uiowa.edu/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/645/thumb/hacuiowa_bg.png?1687290270",
+        "date": "SEP 23RD - 24TH",
+        "location": "Iowa City, Iowa",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "hackUMBC",
+        "link": "http://hackumbc.tech/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/673/thumb/hackUMBC_backsplash_%281%29.png?1688400602",
+        "date": "SEP 23RD - 24TH",
+        "location": "Baltimore, Maryland",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "KU HackFest 2023",
+        "link": "https://kuhackfest.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/658/thumb/WhatsApp_Image_2023-06-28_at_6.26.54_PM.jpeg?1688130938",
+        "date": "SEP 29TH - OCT 1ST",
+        "location": "Kathmandu, Nepal",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Open Source Hackfest",
+        "link": "https://organize.mlh.io/participants/events/10005-open-source-hackfest",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/679/thumb/Event_Hero_Image.jpg?1689663383",
+        "date": "SEP 29TH - OCT 1ST",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "KnightHacks",
+        "link": "https://2023.knighthacks.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/675/thumb/Event-Background.png?1688649948",
+        "date": "OCT 6TH - 8TH",
+        "location": "Orlando, Florida",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackUTA",
+        "link": "https://hackuta.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/634/thumb/HackUTA_backsplash.jpg?1686945116",
+        "date": "OCT 7TH - 8TH",
+        "location": "Arlington, Texas",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "DandyHacks",
+        "link": "https://dandyhacks.net/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/639/thumb/DandyHacks_backsplash.png?1687276484",
+        "date": "OCT 13TH - 15TH",
+        "location": "Rochester, New York",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackGT",
+        "link": "http://hack.gt/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/642/thumb/HackGTXBacksplash-small.jpg?1687285675",
+        "date": "OCT 13TH - 15TH",
+        "location": "Atlanta, Georgia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack WashU",
+        "link": "http://hackwashu.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/647/thumb/backsplash__1__%281%29.png?1687367417",
+        "date": "OCT 13TH - 15TH",
+        "location": "St. Louis, Missouri",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "DubHacks",
+        "link": "https://dubhacks.co/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/637/thumb/dh_backsplash.png?1687272219",
+        "date": "OCT 14TH - 15TH",
+        "location": "Seattle, Washington",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackHarvard",
+        "link": "https://hackharvard.io/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/710/thumb/logo_300.png?1690921035",
+        "date": "OCT 20TH - 22ND",
+        "location": "Cambridge, Massachusetts",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack Dearborn",
+        "link": "https://www.hackdearborn.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/709/thumb/HD2_Backsplash_MLH-4.png?1689972265",
+        "date": "OCT 21ST - 22ND",
+        "location": "Dearborn, Michigan",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackTX",
+        "link": "https://hacktx.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/649/thumb/MLH_backsplash.png?1687439974",
+        "date": "OCT 21ST - 22ND",
+        "location": "Austin, Texas",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "GreatUniHack 2023",
+        "link": "https://greatunihack.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/660/thumb/_1664290499001_Copy_of_Great_Uni_Hack_300_300_px.png?1688387220",
+        "date": "OCT 28TH - 29TH",
+        "location": "Manchester, Lancashire",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack The Mountains 4.O",
+        "link": "https://www.hackthemountain.tech/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/655/thumb/20230628_185120_0000.png?1687959383",
+        "date": "OCT 28TH - 29TH",
+        "location": "Punjab, IN",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackRPI",
+        "link": "https://hackrpi.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/638/thumb/backsplash_2.png?1687276185",
+        "date": "NOV 4TH - 5TH",
+        "location": "Troy, New York",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "NewHacks",
+        "link": "https://newhacks.ca/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/672/thumb/IEEE_Logo.png?1689610476",
+        "date": "NOV 4TH - 5TH",
+        "location": "Toronto, Canada",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "BostonHacks",
+        "link": "https://staging.bostonhacks.io/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/664/thumb/mlh_background.png?1687873107",
+        "date": "NOV 18TH - 19TH",
+        "location": "Boston, Massachusetts",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack Western 10",
+        "link": "https://www.hackwestern.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/661/thumb/_1656603159928_300x300.png?1688386773",
+        "date": "NOV 24TH - 26TH",
+        "location": "London, Ontario",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HackTheMidlands 8.0",
+        "link": "https://hackthemidlands.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/640/thumb/htm_300_300_logo_%281%29.png?1687282989",
+        "date": "DEC 9TH - 10TH",
+        "location": "Birmingham, United Kingdom",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "nwHacks",
+        "link": "https://nwhacks.io/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/633/thumb/nwHacks_2024_Event_Background_Square.png?1686944859",
+        "date": "JAN 20TH - 21ST",
+        "location": "Vancouver, Canada",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "HoyaHacks",
+        "link": "https://hoyahacks.georgetown.domains/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/648/thumb/hoyabacksplash.png?1687371753",
+        "date": "JAN 26TH - 28TH",
+        "location": "Washington, District of Columbia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hacklytics",
+        "link": "https://hacklytics.io/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/656/thumb/jpgtopngconverter-com.jpg?1688386675",
+        "date": "FEB 9TH - 11TH",
+        "location": "Atlanta, Georgia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hack This Fall 4.0",
+        "link": "https://hackthisfall.tech/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/654/thumb/WhatsApp_Image_2023-06-28_at_6.38.12_PM.jpeg?1687957950",
+        "date": "FEB 9TH - 11TH",
+        "location": "Gandhinagar, Gujarat",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "UGAHacks 9",
+        "link": "https://9.ugahacks.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/651/thumb/Event_Splash.png?1688046177",
+        "date": "FEB 9TH - 11TH",
+        "location": "Athens, Georgia",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "Hacklahoma",
+        "link": "https://2024.hacklahoma.org/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/650/thumb/hacklahoma_backsplash.png?1688045998",
+        "date": "FEB 10TH - 11TH",
+        "location": "Norman, Oklahoma",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "cmd-f",
+        "link": "https://cmd-f.nwplus.io/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/671/thumb/cmd-f_2024_Event_Background_Square.png?1688045252",
+        "date": "MAR 9TH - 10TH",
+        "location": "Vancouver, Canada",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "WEHack",
+        "link": "https://wehackutd.com/",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/632/thumb/WEHack_Logo_-_transparent_%281%29.png?1686944678",
+        "date": "MAR 16TH - 17TH",
+        "location": "Dallas, Texas",
+        "mode": "In-Person Only"
+    },
+    {
+        "name": "TechTogether Online",
+        "link": "https://organize.mlh.io/participants/events/9846-techtogether-digital",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/629/thumb/Devpost_Thumbnail.jpg?1688049274",
+        "date": "JUL 14TH - 16TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "Hacks for Hackers",
+        "link": "https://organize.mlh.io/participants/events/9847-hacks-for-hackers",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/630/thumb/Social_Instagram.jpg?1688049474",
+        "date": "JUL 21ST - 23RD",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "HackBattle: React vs Angular",
+        "link": "https://organize.mlh.io/participants/events/9848-hackbattle-react-vs-angular",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/631/thumb/Social_Instagram.png?1688049413",
+        "date": "JUL 28TH - 30TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "Global Hack Week: Data",
+        "link": "https://organize.mlh.io/participants/events/9764-global-hack-week-data-week",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/652/thumb/Aug-generic_IG.png?1687803206",
+        "date": "JUL 31ST - AUG 7TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    },
+    {
+        "name": "TechTogether Online",
+        "link": "https://organize.mlh.io/participants/events/9905-techtogether-digital",
+        "image": "https://s3.amazonaws.com/assets.mlh.io/events/splashes/000/212/663/thumb/Social_Instagram_%281%29.png?1688049610",
+        "date": "AUG 4TH - 6TH",
+        "location": "Everywhere, Worldwide",
+        "mode": "Digital Only"
+    }
+]
