@@ -31,7 +31,7 @@ class _UploadNotesState extends State<UploadNotes> {
 
     if (result != null) {
       String filePath = result.files.first.path!;
-      print("${result.files.first.name}.pdf");
+
       return filePath;
     }
     return null;
@@ -158,7 +158,7 @@ class _UploadNotesState extends State<UploadNotes> {
                     showSnackBar(context, "Plz select a tag");
                   } else {
                     String? filePath = await pickFiles();
-                    print("$filePath 2");
+
                     await uploadPdf("our pdfs", filePath!);
                   }
                 },
