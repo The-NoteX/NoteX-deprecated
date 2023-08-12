@@ -5,7 +5,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/register/name.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
-import 'logout.dart';
 import 'utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -154,7 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         _credentials = credentials;
                       });
 
-
+                      // print(credentials.idToken);
+                      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
                     },
                     child: Center(

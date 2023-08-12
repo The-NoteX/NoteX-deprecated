@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:notex/home.dart';
-import 'package:notex/logout.dart';
 import 'utils/constants.dart';
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +20,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     hght = MediaQuery.of(context).size.height;
     wdth = MediaQuery.of(context).size.width;
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Theme.of(context).primaryColor,
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Theme.of(context).brightness,
+      statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
+          ? Brightness.light
+          : Brightness.dark,
+    ));
 
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
