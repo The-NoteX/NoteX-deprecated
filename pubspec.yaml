@@ -59,6 +59,7 @@ flutter:
     - assests/logo5.png
     - assests/mascot-blush.png
     - assests/th.jpeg
+    - assests/hackathons.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
