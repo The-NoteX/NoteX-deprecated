@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notex/home.dart';
-
 import 'utils/constants.dart';
 
 void main() {
