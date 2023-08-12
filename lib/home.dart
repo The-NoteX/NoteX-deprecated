@@ -3,6 +3,7 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notex/register/name.dart';
 import 'utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            print("wo");
                             _confettiController.play();
 
                             showSnackBar(
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child:
                     Center(child: Image.asset("assests/logo5.png", scale: 2)),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
               // App Name
 
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   softWrap: true,
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 70),
 
               // next button
 
@@ -132,7 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     maxHeight: hght * 0.09,
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      // call authentication methods
+
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const Name()),
+                      );
+                    },
                     child: Center(
                       child: Text(
                         "Shall We ?",
