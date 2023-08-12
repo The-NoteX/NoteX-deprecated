@@ -146,8 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: InkWell(
                     onTap: () async {
-                      final credentials =
-                          await auth0.webAuthentication().login(redirectUrl: "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
+                      final credentials = await auth0.webAuthentication().login(
+                          redirectUrl:
+                              "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
 
                       setState(() {
                         _credentials = credentials;
@@ -155,7 +156,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       // print(credentials.idToken);
                       // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Name()));
                     },
                     child: Center(
                       child: Text(
