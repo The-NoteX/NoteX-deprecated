@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notex/home.dart';
+import 'package:notex/logout.dart';
 import 'utils/constants.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

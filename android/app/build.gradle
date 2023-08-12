@@ -48,7 +48,8 @@ android {
         applicationId "com.example.notex"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 19
+        minSdkVersion 21
+        manifestPlaceholders += [auth0Domain: "dev-ik8k4e5s5gh2erad.us.auth0.com", auth0Scheme: "notex"]
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

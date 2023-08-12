@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/register/name.dart';
+import 'package:auth0_flutter/auth0_flutter.dart';
+import 'logout.dart';
 import 'utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     super.dispose();
     _confettiController.dispose();
+  }
+
+  Credentials? _credentials;
+
+  late Auth0 auth0;
+
+  @override
+  void initState() {
+    super.initState();
+    auth0 = Auth0('dev-ik8k4e5s5gh2erad.us.auth0.com',
+        '6OJfo7nJS8HyJ6heJuDVlGE5xndshuWu');
   }
 
   @override
@@ -133,12 +146,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     maxHeight: hght * 0.09,
                   ),
                   child: InkWell(
-                    onTap: () {
-                      // call authentication methods
+                    onTap: () async {
+                      final credentials =
+                          await auth0.webAuthentication().login(redirectUrl: "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
 
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const Name()),
-                      );
+                      setState(() {
+                        _credentials = credentials;
+                      });
+
+
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
                     },
                     child: Center(
                       child: Text(
