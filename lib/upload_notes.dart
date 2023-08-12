@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/utils/constants.dart';
 // import '../resources/auth_method.dart';
+import 'package:notex/notes/notes_storage.dart';
 
 class UploadNotes extends StatefulWidget {
   const UploadNotes({super.key});
