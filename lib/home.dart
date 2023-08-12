@@ -76,8 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                child:
-                    Center(child: Image.asset("assests/logo5.png", scale: 2)),
+                child: Center(
+                  child: Image.asset("assests/logo5.png", scale: hght * 0.0025),
+                ),
               ),
               const SizedBox(height: 40),
 
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "NoteX",
                   style: GoogleFonts.manrope(
-                    fontSize: 50,
+                    fontSize: wdth * 0.1,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -100,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "Share notes, connect with people, crack ",
                   style: GoogleFonts.manrope(
-                    fontSize: 17,
+                    fontSize: wdth * 0.045,
                     fontWeight: FontWeight.w500,
                   ),
                   softWrap: true,
@@ -111,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "university examinations",
                   style: GoogleFonts.manrope(
-                    fontSize: 17,
+                    fontSize: wdth * 0.045,
                     fontWeight: FontWeight.w500,
                   ),
                   softWrap: true,
@@ -143,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         "Shall We ?",
                         style: GoogleFonts.manrope(
-                          fontSize: 27,
+                          fontSize: hght * 0.035,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),

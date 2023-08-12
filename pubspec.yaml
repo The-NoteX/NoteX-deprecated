@@ -9,6 +9,10 @@ environment:
 dependencies:
   cloud_firestore: ^4.8.4
   confetti: ^0.7.0
+<<<<<<< HEAD
+=======
+  cupertino_icons: ^1.0.2
+>>>>>>> e987158cd01005b8e8779869c695d4f592073a37
   file_picker: ^5.3.3
   firebase_auth: ^4.7.2
   firebase_core: ^2.15.0
