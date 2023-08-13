@@ -14,20 +14,23 @@ class ExploreNotes extends StatefulWidget {
 class _ExploreNotesState extends State<ExploreNotes> {
   @override
   Widget build(BuildContext context) {
-    PreferredSize appBar = PreferredSize(
-      preferredSize: const Size.fromHeight(56.5),
-      child: AppBar(
-        title: Container(
-          alignment: const Alignment(-0.2, -0.9),
-        ),
-        toolbarHeight: 56.5,
-        backgroundColor: backgroundColor,
-        shadowColor: Colors.transparent,
-      ),
-    );
-
     return Scaffold(
-      appBar: appBar,
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(top: 3.0, left: 10,),
+          child: Text(
+            'Explore Notes',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("pdf").snapshots(),
         builder: (context, snapshot) {

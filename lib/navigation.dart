@@ -34,27 +34,24 @@ class _NavigationState extends State<Navigation> {
           ),
           NavigationDestination(
             icon: Icon(
+                size: 30, MdiIcons.starBox, color: Colors.white),
+            selectedIcon: Icon(size: 30, MdiIcons.stackOverflow, color: Colors.white),
+            label: "Internships",
+          ),
+          NavigationDestination(
+            icon: Icon(
                 size: 30, MdiIcons.lightbulbOnOutline, color: Colors.white),
             selectedIcon: Icon(size: 30, MdiIcons.lightbulbOn, color: Colors.white),
             label: "Hackathons",
           ),
 
           NavigationDestination(
-            icon: Icon(
-                size: 30, Icons.add_road_outlined, color: Colors.white),
-            selectedIcon: Icon(size: 30, Icons.add_road_outlined, color: Colors.white),
-            label: "Internships",
-          ),
-          NavigationDestination(
             icon: Icon(size: 30, MdiIcons.noteEditOutline, color: Colors.white),
             selectedIcon: Icon(size: 30, MdiIcons.note, color: Colors.white),
             label: "Upload",
           ),
-          const NavigationDestination(
-            icon: CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage("assests/th.jpeg"),
-            ),
+          NavigationDestination(
+            icon: Icon(size: 30, MdiIcons.faceManProfile, color: Colors.white,),
             label: "Profile",
           ),
         ],

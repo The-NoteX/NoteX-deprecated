@@ -1,15 +1,17 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:uuid/uuid.dart';
+import 'package:http/http.dart' as http;
+
+final storageRef = FirebaseStorage.instance.ref();
+final firestore = FirebaseFirestore.instance;
 
 Future<String> uploadPdf(String tags, String filePath, String subject,
-    int likes, String filename, String author, sem) async {
-  final storageRef = FirebaseStorage.instance.ref();
-  final firestore = FirebaseFirestore.instance;
-
+    int likes, String filename, String author, String sem) async {
   try {
     final mountainsRef = storageRef.child("Notes");
 
@@ -24,7 +26,6 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
 
     final url =
         await FirebaseStorage.instance.ref().child('Notes').getDownloadURL();
-    print(url);
 
     firestore.collection("pdf").doc(uid).set({
       "author": author,
@@ -34,6 +35,7 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
       "subject": subject,
       "filename": filename,
       "semester": sem,
+      "docid": uid,
     });
 
     return "true";
@@ -64,4 +66,30 @@ Future<String?> pickFiles() async {
     return filePath;
   }
   return "done";
+}
+
+Future<String> postComment(String comment, String docId) async {
+  var url = Uri.parse("http://10.50.5.86:8000/model/?q=$comment");
+  var response = await http.get(url);
+  var json = jsonDecode(response.body);
+  var value = json['predict'];
+
+  print(value);
+  if (value == 1) {
+    String commentId = const Uuid().v1();
+
+    firestore
+        .collection('pdf')
+        .doc(docId)
+        .collection("comments")
+        .doc(commentId)
+        .set({
+      "comment": comment,
+      "date": DateTime.now(),
+    });
+
+    return "true";
+  } else {
+    return "spam";
+  }
 }

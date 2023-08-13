@@ -8,8 +8,6 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-
-  
   auth0_flutter: ^1.2.1
   cloud_firestore: ^4.8.4
   confetti: ^0.7.0
@@ -24,6 +22,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   google_fonts: ^5.1.0
   http: ^1.1.0
+  intl: ^0.18.1
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.1.0
   provider: ^6.0.5

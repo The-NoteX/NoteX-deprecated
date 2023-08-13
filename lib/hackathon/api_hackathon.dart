@@ -7,7 +7,7 @@ Future<List<dynamic>> fetchData() async {
 
   if (response.statusCode == 200) {
     final List<dynamic> data = json.decode(response.body);
-    print(data);
+
     return data;
   } else {
     throw Exception('Failed to fetch data');

@@ -64,7 +64,7 @@ class _HackBoxState extends State<HackBox> {
           ],
         ),
         Container(
-          constraints: const BoxConstraints(maxWidth: 160),
+          constraints: const BoxConstraints(maxWidth: 175),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
