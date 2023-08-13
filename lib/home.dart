@@ -5,7 +5,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/register/name.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
-import 'logout.dart';
 import 'utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -147,15 +146,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: InkWell(
                     onTap: () async {
-                      final credentials =
-                          await auth0.webAuthentication().login(redirectUrl: "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
+                      final credentials = await auth0.webAuthentication().login(
+                          redirectUrl:
+                              "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
 
                       setState(() {
                         _credentials = credentials;
                       });
 
+                      // if () {
 
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
+                      // } else {
+
+                      // }
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const Name()));
+                      // ignore: use_build_context_synchronously
+                      await Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Name()));
                     },
                     child: Center(
                       child: Text(

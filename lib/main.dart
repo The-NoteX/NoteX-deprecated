@@ -1,30 +1,36 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:notex/home.dart';
-import 'package:notex/logout.dart';
-import 'utils/constants.dart';
+import 'package:notex/utils/constants.dart';
 
-
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  timeDilation = 1;
+  await Firebase.initializeApp();
+  runApp(const MainApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     hght = MediaQuery.of(context).size.height;
     wdth = MediaQuery.of(context).size.width;
 
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.white,
+        systemNavigationBarColor: Color.fromARGB(255, 0, 0, 0),
+      ),
+    );
+
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

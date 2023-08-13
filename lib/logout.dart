@@ -26,12 +26,15 @@ class _LogoutScreenState extends State<LogoutScreen> {
     return Scaffold(
       body: ElevatedButton(
         onPressed: () async {
-          await auth0.webAuthentication().logout(returnTo:"notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
+          await auth0.webAuthentication().logout(
+              returnTo:
+                  "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
           setState(() {
             _credentials = null;
           });
 
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          await Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
         },
         child: const Center(
           child: Text('Logout'),
