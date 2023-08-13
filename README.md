@@ -1,16 +1,36 @@
-# notex
+# NoteX
 
-A new Flutter project.
+NoteX is a one-stop shop for college students where they can share notes with each other and get updates about upcoming hackathons.
 
-## Getting Started
+# Features
 
-This project is a starting point for a Flutter application.
+* Share notes with each other
+* Get updates about hackathons
+* Get updates about internships
 
-A few resources to get you started if this is your first Flutter project:
+# Tech Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Flutter
+* Firebase
+* Auth0
+* FastAPI
+* Python
+* Selenium
+* Docker
+* Support Vector Classifier
+* Postman
+* Figma
+* Canva
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Build Instructions
+
+Follow the instructions to run the app in your own system
+
+1. Clone the repository using git clone
+''' git clone https://github.com/Tech-Emcees/NoteX.git '''
+2. Change directory to the cloned repository
+''' cd NoteX/ '''
+3. Update dependencies
+''' flutter pub get '''
+4. Run the app
+''' flutter run '''
