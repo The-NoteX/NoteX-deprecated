@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -93,17 +94,27 @@ class _PdfBoxState extends State<PdfBox> {
                           fontSize: 25, fontWeight: FontWeight.w500),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  Wrap(
                     children: [
                       TextButton(
                         style: const ButtonStyle(
                             iconSize: MaterialStatePropertyAll(20),
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
-                        child: const SizedBox(
-                            width: 20.0,
-                            child: FaIcon(FontAwesomeIcons.shareNodes)),
+                        child:
+                            SizedBox(width: 20.0, child: Icon(MdiIcons.share)),
+                        onPressed: () {
+                          final url = widget.snap['pdfurl'];
+
+                          Share.share(url);
+                        },
+                      ),
+                      TextButton(
+                        style: const ButtonStyle(
+                            iconSize: MaterialStatePropertyAll(20),
+                            foregroundColor:
+                                MaterialStatePropertyAll(Colors.black)),
+                        child: FaIcon(MdiIcons.comment),
                         onPressed: () {},
                       ),
                       TextButton(
@@ -111,19 +122,11 @@ class _PdfBoxState extends State<PdfBox> {
                             iconSize: MaterialStatePropertyAll(20),
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
-                        child: const FaIcon(FontAwesomeIcons.comment),
+                        child: Icon(MdiIcons.download),
                         onPressed: () {},
                       ),
                       TextButton(
-                        style: const ButtonStyle(
-                            iconSize: MaterialStatePropertyAll(20),
-                            foregroundColor:
-                                MaterialStatePropertyAll(Colors.black)),
-                        child: const FaIcon(FontAwesomeIcons.download),
-                        onPressed: () {},
-                      ),
-                      TextButton(
-                        child: const Icon(Icons.thumb_up),
+                        child: Icon(MdiIcons.thumbUp),
                         onPressed: () {},
                       ),
                     ],

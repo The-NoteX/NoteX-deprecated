@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:notex/utils/constants.dart';
 
 class HackBox extends StatefulWidget {
   final dynamic name;
