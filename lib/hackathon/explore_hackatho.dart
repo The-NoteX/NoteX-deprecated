@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notex/utils/constants.dart';
 
+import '../utils/hack_box.dart';
 import 'api_hackathon.dart';
 
 class ExploreHackathons extends StatefulWidget {
@@ -43,9 +44,16 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
         child: ListView(
           children: [
             for (var item in data)
-              ListTile(
-                title: Text(item['name']),
-                subtitle: Text(item['link']),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: HackBox(
+                  name: item['name'],
+                  link: item['link'],
+                  image: item['image'],
+                  date: item['date'],
+                  location: item['location'],
+                  mode: item['mode'],
+                ),
               ),
           ],
         ),
