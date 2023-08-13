@@ -4,9 +4,7 @@ NoteX is a one-stop shop for college students where they can share notes with ea
 
 # Features
 
-* Share notes with each other
-* Get updates about hackathons
-* Get updates about internships
+It is a complete package for a college student who wants to manage his academics and ambitions efficiently.
 
 # Tech Dependencies
 
