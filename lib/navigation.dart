@@ -50,11 +50,8 @@ class _NavigationState extends State<Navigation> {
             selectedIcon: Icon(size: 30, MdiIcons.note, color: Colors.white),
             label: "Upload",
           ),
-          const NavigationDestination(
-            icon: CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage("assests/th.jpeg"),
-            ),
+          NavigationDestination(
+            icon: Icon(size: 30, MdiIcons.faceManProfile, color: Colors.white,),
             label: "Profile",
           ),
         ],
