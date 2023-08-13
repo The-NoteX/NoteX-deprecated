@@ -1,9 +1,11 @@
+import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:notex/logout.dart';
 import 'package:notex/profile/update_profile.dart';
 import 'package:notex/utils/constants.dart';
+
+import '../home.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -13,6 +15,17 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  Credentials? _credentials;
+
+  late Auth0 auth0;
+
+  @override
+  void initState() {
+    super.initState();
+    auth0 = Auth0('dev-ik8k4e5s5gh2erad.us.auth0.com',
+        '6OJfo7nJS8HyJ6heJuDVlGE5xndshuWu');
+  }
+
   @override
   Widget build(BuildContext context) {
     PreferredSize appBar = PreferredSize(
@@ -129,15 +142,19 @@ class _ProfileState extends State<Profile> {
               overlayColor: const MaterialStatePropertyAll(
                 Color.fromARGB(255, 88, 245, 245),
               ),
-              onTap: () {
-                // update auth0
+              onTap: () async {
+                await auth0.webAuthentication().logout(
+                    returnTo:
+                        "notex://dev-ik8k4e5s5gh2erad.us.auth0.com/android/com.example.notex/callback");
+                setState(() {
+                  _credentials = null;
+                });
 
-                // Home screen
-
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LogoutScreen()),
-                );
+                // ignore: use_build_context_synchronously
+                await Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
