@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../utils/hack_box.dart';
 import 'api_hackathon.dart';
 
 class ExploreHackathons extends StatefulWidget {
@@ -27,15 +29,20 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Explore Hackathons',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 20, left: 10),
+          child: Text(
+            'Explore Hackathons',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
-        backgroundColor: backgroundColor,
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
       ),
       body: Center(
           // for item in data make listTile
@@ -43,9 +50,22 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
         child: ListView(
           children: [
             for (var item in data)
-              ListTile(
-                title: Text(item['name']),
-                subtitle: Text(item['link']),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    final Uri url = Uri.parse(item['link']);
+                    await launchUrl(url);
+                  },
+                  child: HackBox(
+                    name: item['name'],
+                    link: item['link'],
+                    image: item['image'],
+                    date: item['date'],
+                    location: item['location'],
+                    mode: item['mode'],
+                  ),
+                ),
               ),
           ],
         ),

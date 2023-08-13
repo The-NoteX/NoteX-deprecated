@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.white,
+        systemNavigationBarDividerColor: Colors.black,
         systemNavigationBarColor: Color.fromARGB(255, 0, 0, 0),
       ),
     );
