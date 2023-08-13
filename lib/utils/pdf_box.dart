@@ -1,13 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/utils/constants.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+import '../notes/comment.dart';
 
 class PdfBox extends StatefulWidget {
   final snap;
@@ -93,7 +91,7 @@ class _PdfBoxState extends State<PdfBox> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 30.0),
                     child: Text(
-                      'Semester ${widget.snap['sem']}',
+                      'Semester ${widget.snap['semester']}',
                       style: GoogleFonts.manrope(
                           fontSize: 25, fontWeight: FontWeight.w500),
                     ),
@@ -119,7 +117,11 @@ class _PdfBoxState extends State<PdfBox> {
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
                         child: FaIcon(MdiIcons.comment),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  Comments(snap: widget.snap)));
+                        },
                       ),
                     ],
                   ),
@@ -131,18 +133,7 @@ class _PdfBoxState extends State<PdfBox> {
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
                         child: Icon(MdiIcons.download),
-                        onPressed: () async {
-                          firebase_storage.Reference ref = firebase_storage
-                              .FirebaseStorage.instance
-                              .refFromURL(widget.snap['pdfurl']);
-
-                          Directory appDocDir =
-                              await getApplicationDocumentsDirectory();
-
-                          File downloadToFile =
-                              File('${appDocDir.path}/Notes.pdf');
-                          await ref.writeToFile(downloadToFile);
-                        },
+                        onPressed: () async {},
                       ),
                       TextButton(
                         child: Icon(MdiIcons.thumbUp),

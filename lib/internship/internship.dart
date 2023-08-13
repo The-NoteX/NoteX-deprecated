@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -18,6 +17,8 @@ class InternshipPage extends StatelessWidget {
     ),
   );
 
+  InternshipPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,11 +33,16 @@ class InternshipPage extends StatelessWidget {
 
 class InternshipCard extends StatelessWidget {
   final List<InternshipWebsite> internshipWebsites = [
-    InternshipWebsite("Internshala", "https://internshala.com/", "internshala_logo_url"),
-    InternshipWebsite("LinkedIn", "https://www.linkedin.com", "linkedin_logo_url"),
-    InternshipWebsite("Indeed", "https://www.indeed.com", "https://prod.statics.indeed.com/eml/assets/images/logo/indeed_logo_1200x630.png"),
+    InternshipWebsite(
+        "Internshala", "https://internshala.com/", "internshala_logo_url"),
+    InternshipWebsite(
+        "LinkedIn", "https://www.linkedin.com", "linkedin_logo_url"),
+    InternshipWebsite("Indeed", "https://www.indeed.com",
+        "https://prod.statics.indeed.com/eml/assets/images/logo/indeed_logo_1200x630.png"),
     // Add more internship websites here
   ];
+
+  InternshipCard({super.key});
 
   @override
   Widget build(BuildContext context) {

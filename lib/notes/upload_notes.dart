@@ -15,6 +15,7 @@ class UploadNotes extends StatefulWidget {
 
 class _UploadNotesState extends State<UploadNotes> {
   String _tag = "";
+  int _sem = 0;
   String? _fileName;
   String? filePath;
   bool _isSelected = false;
@@ -23,6 +24,12 @@ class _UploadNotesState extends State<UploadNotes> {
   void onButtonPressed(String index) {
     setState(() {
       _tag = index;
+    });
+  }
+
+  void onButtonPressed1(int index) {
+    setState(() {
+      _sem = index;
     });
   }
 
@@ -44,6 +51,7 @@ class _UploadNotesState extends State<UploadNotes> {
   Widget build(BuildContext context) {
 
     // List of Courses
+
     List<String> tags = ["CSE", "ECE"];
 
     List<Widget> tagsButton = List.generate(
@@ -74,6 +82,46 @@ class _UploadNotesState extends State<UploadNotes> {
         );
       },
     );
+
+    List<String> buttonsText = [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+    ];
+
+    List<Widget> buttons = List.generate(
+      buttonsText.length,
+      (index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 7),
+          child: ElevatedButton(
+            onPressed: () {
+              onButtonPressed1(index + 1);
+            },
+            style: ElevatedButton.styleFrom(
+              shape:
+                  const StarBorder.polygon(sides: 4, squash: 1, rotation: 100),
+              foregroundColor: _sem == index + 1 ? Colors.white : Colors.black,
+              backgroundColor: _sem == index + 1 ? Colors.black : Colors.white,
+            ),
+            child: Text(
+              buttonsText[index],
+              style: GoogleFonts.manrope(
+                fontWeight: FontWeight.w600,
+                fontSize: _sem == index + 1 ? 20 : 13,
+              ),
+            ),
+          ),
+        );
+      },
+      growable: true,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -92,7 +140,7 @@ class _UploadNotesState extends State<UploadNotes> {
         toolbarHeight: 70,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 100, left: 25, right: 25),
+        padding: const EdgeInsets.only(top: 50, left: 25, right: 25),
         child: ListView(
           children: [
             // tag
@@ -107,7 +155,7 @@ class _UploadNotesState extends State<UploadNotes> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Wrap(spacing: 20, children: tagsButton),
             ),
-            const SizedBox(height: 75),
+            const SizedBox(height: 40),
 
             // subject
 
@@ -141,7 +189,25 @@ class _UploadNotesState extends State<UploadNotes> {
               ),
             ),
 
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
+
+            Container(
+              alignment: const Alignment(-0.7, -1),
+              child: Text(
+                "Semester",
+                style: GoogleFonts.manrope(
+                  fontSize: wdth * 0.1,
+                  fontWeight: FontWeight.w300,
+                ),
+                softWrap: true,
+              ),
+            ),
+            const SizedBox(height: 5),
+
+            // sem button
+
+            Center(child: Wrap(children: buttons)),
+            const SizedBox(height: 40),
 
             // file browse
 
@@ -184,8 +250,15 @@ class _UploadNotesState extends State<UploadNotes> {
                 ),
                 borderRadius: BorderRadius.circular(50),
                 onTap: () async {
-                  String uploaded = await uploadPdf(_tag.toString(), filePath!,
-                      _subject.text, 0, _fileName.toString(), username, 1);
+                  String uploaded = await uploadPdf(
+                    _tag.toString(),
+                    filePath!,
+                    _subject.text,
+                    _sem,
+                    _fileName.toString(),
+                    username,
+                    1,
+                  );
 
                   if (uploaded == "true") {
                     // ignore: use_build_context_synchronously
@@ -206,6 +279,7 @@ class _UploadNotesState extends State<UploadNotes> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
+                      const SizedBox(height: 40),
                     ],
                   ),
                 ),
