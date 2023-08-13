@@ -19,9 +19,8 @@ showSnackBar(BuildContext context, String content) {
 
 List<Widget> pages = [
   const ExploreNotes(),
-  
   const ExploreHackathons(),
-   InternshipPage(),
+  InternshipPage(),
   const UploadNotes(),
   const Profile(),
 ];

@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class PdfBox extends StatefulWidget {
   final snap;
@@ -117,20 +121,35 @@ class _PdfBoxState extends State<PdfBox> {
                         child: FaIcon(MdiIcons.comment),
                         onPressed: () {},
                       ),
+                    ],
+                  ),
+                  Wrap(
+                    children: [
                       TextButton(
                         style: const ButtonStyle(
                             iconSize: MaterialStatePropertyAll(20),
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
                         child: Icon(MdiIcons.download),
-                        onPressed: () {},
+                        onPressed: () async {
+                          firebase_storage.Reference ref = firebase_storage
+                              .FirebaseStorage.instance
+                              .refFromURL(widget.snap['pdfurl']);
+
+                          Directory appDocDir =
+                              await getApplicationDocumentsDirectory();
+
+                          File downloadToFile =
+                              File('${appDocDir.path}/Notes.pdf');
+                          await ref.writeToFile(downloadToFile);
+                        },
                       ),
                       TextButton(
                         child: Icon(MdiIcons.thumbUp),
                         onPressed: () {},
                       ),
                     ],
-                  ),
+                  )
                 ],
               )
             ],
