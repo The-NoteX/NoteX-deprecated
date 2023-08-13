@@ -196,7 +196,7 @@ class _UploadNotesState extends State<UploadNotes> {
                     fillColor: Colors.white,
                     filled: true,
                     border: InputBorder.none,
-                    hintText: "  janedoe_12;",
+                    hintText: "Name",
                     labelStyle: TextStyle(color: Colors.transparent),
                   ),
                 ),
