@@ -80,7 +80,7 @@ class _NameState extends State<Name> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(100),
                 ),
-                hintText: "  janedoe_12;",
+                hintText: "Name",
                 labelStyle: const TextStyle(color: Colors.blue),
               ),
             ),
