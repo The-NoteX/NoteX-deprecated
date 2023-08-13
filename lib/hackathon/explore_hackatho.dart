@@ -29,15 +29,20 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Explore Hackathons',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 20, left: 10),
+          child: Text(
+            'Explore Hackathons',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
-        backgroundColor: backgroundColor,
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
       ),
       body: Center(
           // for item in data make listTile

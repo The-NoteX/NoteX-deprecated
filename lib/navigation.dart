@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'utils/constants.dart';
 
@@ -16,7 +17,7 @@ class _NavigationState extends State<Navigation> {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         elevation: 0,
-        height: 60,
+        // height: 60,
         indicatorColor: Colors.transparent,
         backgroundColor: Colors.black,
         selectedIndex: _page,
@@ -25,16 +26,16 @@ class _NavigationState extends State<Navigation> {
             _page = value;
           });
         },
-        destinations: const [
+        destinations:  [
           NavigationDestination(
-            icon: Icon(size: 30, Icons.home_outlined, color: Colors.white),
-            selectedIcon: Icon(size: 30, Icons.home, color: Colors.white),
+            icon: Icon(size: 30, MdiIcons.homeVariantOutline, color: Colors.white),
+            selectedIcon: Icon(size: 30, MdiIcons.homeVariant, color: Colors.white),
             label: "Home",
           ),
           NavigationDestination(
             icon: Icon(
-                size: 30, Icons.lightbulb_outline_rounded, color: Colors.white),
-            selectedIcon: Icon(size: 30, Icons.lightbulb, color: Colors.white),
+                size: 30, MdiIcons.lightbulbOnOutline, color: Colors.white),
+            selectedIcon: Icon(size: 30, MdiIcons.lightbulbOn, color: Colors.white),
             label: "Hackathons",
           ),
 
@@ -45,11 +46,11 @@ class _NavigationState extends State<Navigation> {
             label: "Internships",
           ),
           NavigationDestination(
-            icon: Icon(size: 30, Icons.note_alt_outlined, color: Colors.white),
-            selectedIcon: Icon(size: 30, Icons.note_alt, color: Colors.white),
+            icon: Icon(size: 30, MdiIcons.noteEditOutline, color: Colors.white),
+            selectedIcon: Icon(size: 30, MdiIcons.note, color: Colors.white),
             label: "Upload",
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: CircleAvatar(
               radius: 15,
               backgroundImage: AssetImage("assests/th.jpeg"),

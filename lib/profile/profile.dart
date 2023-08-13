@@ -39,7 +39,7 @@ class _ProfileState extends State<Profile> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: backgroundColor,
+        backgroundColor: Colors.grey,
         shadowColor: Colors.transparent,
       ),
     );
