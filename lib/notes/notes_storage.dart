@@ -6,7 +6,7 @@ import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:uuid/uuid.dart';
 
 Future<String> uploadPdf(String tags, String filePath, String subject,
-    int likes, String filename) async {
+    int likes, String filename, String author, sem) async {
   final storageRef = FirebaseStorage.instance.ref();
   final firestore = FirebaseFirestore.instance;
 
@@ -27,11 +27,13 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
     print(url);
 
     firestore.collection("pdf").doc(uid).set({
+      "author": author,
       "pdfurl": url,
       "likes": likes,
       "tags": tags,
       "subject": subject,
       "filename": filename,
+      "semester": sem,
     });
 
     return "true";

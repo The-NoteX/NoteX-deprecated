@@ -199,13 +199,8 @@ class _UploadNotesState extends State<UploadNotes> {
                 ),
                 borderRadius: BorderRadius.circular(50),
                 onTap: () async {
-                  String uploaded = await uploadPdf(
-                    _tag.toString(),
-                    filePath!,
-                    _subject.text,
-                    0,
-                    _fileName.toString(),
-                  );
+                  String uploaded = await uploadPdf(_tag.toString(), filePath!,
+                      _subject.text, 0, _fileName.toString(), username, 1);
 
                   if (uploaded == "true") {
                     // ignore: use_build_context_synchronously
@@ -217,10 +212,10 @@ class _UploadNotesState extends State<UploadNotes> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const FaIcon(FontAwesomeIcons.userPen),
+                      const FaIcon(FontAwesomeIcons.upload),
                       const SizedBox(width: 15),
                       Text(
-                        "Update Details",
+                        "Upload",
                         style: GoogleFonts.manrope(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,

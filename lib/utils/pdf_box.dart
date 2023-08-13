@@ -32,6 +32,7 @@ class _PdfBoxState extends State<PdfBox> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(height: 5),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,7 +43,7 @@ class _PdfBoxState extends State<PdfBox> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 15),
               Container(
                 height: 40,
                 width: 80,
@@ -62,10 +63,28 @@ class _PdfBoxState extends State<PdfBox> {
                   ),
                 )),
               ),
-              const SizedBox(height: 30),
-              Container(
-                child: const Text("Open PDF"),
+              const SizedBox(height: 10),
+              TextButton(
+                style: const ButtonStyle(
+                  shape: MaterialStatePropertyAll(StadiumBorder()),
+                  fixedSize: MaterialStatePropertyAll(Size.fromWidth(200)),
+                ),
+                onPressed: () {
+                  print("4");
+                },
+                child: Container(
+                  alignment: const Alignment(-0.9, 0),
+                  child: const Text("Open PDF"),
+                ),
               ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                  //   alignment: const Alignment(0.8, 0),
+                  child: Text(widget.snap['sem'])),
             ],
           ),
         ],
