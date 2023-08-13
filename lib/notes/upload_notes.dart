@@ -42,36 +42,6 @@ class _UploadNotesState extends State<UploadNotes> {
 
   @override
   Widget build(BuildContext context) {
-// appbar
-
-    PreferredSize appBar = PreferredSize(
-      preferredSize: const Size.fromHeight(56.5),
-      child: AppBar(
-        title: Container(
-          alignment: const Alignment(-0.25, -0.9),
-          child: Text(
-            "Upload Notes",
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        toolbarHeight: 56.5,
-        leading: IconButton(
-          iconSize: 24.5,
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: backgroundColor,
-        shadowColor: Colors.transparent,
-      ),
-    );
 
     // List of Courses
     List<String> tags = ["CSE", "ECE"];
@@ -105,7 +75,22 @@ class _UploadNotesState extends State<UploadNotes> {
       },
     );
     return Scaffold(
-      appBar: appBar,
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(top: 20, left: 10),
+          child: Text(
+            'Upload Notes',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 100, left: 25, right: 25),
         child: ListView(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../utils/constants.dart';
 
@@ -81,28 +82,27 @@ class _UpdateProfileState extends State<UpdateProfile> {
     List<Widget> buttons = List.generate(
       buttonsText.length,
       (index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7),
-          child: ElevatedButton(
-            onPressed: () {
-              onButtonPressed1(buttonsText[index]);
-            },
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size(100, 50),
-              shape: const StadiumBorder(),
-              foregroundColor: _updatedBranch == buttonsText[index]
-                  ? Colors.white
-                  : Colors.black,
-              backgroundColor: _updatedBranch == buttonsText[index]
-                  ? Colors.black
-                  : Colors.white,
-            ),
-            child: Text(
-              buttonsText[index],
-              style: GoogleFonts.manrope(
-                fontWeight: FontWeight.w400,
-                fontSize: _updatedBranch == buttonsText[index] ? 20 : 15,
-              ),
+        return ElevatedButton(
+          onPressed: () {
+            onButtonPressed1(buttonsText[index]);
+          },
+          style: ElevatedButton.styleFrom(
+            fixedSize: const Size(100, 50),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+                side: const BorderSide(width: 1)),
+            foregroundColor: _updatedBranch == buttonsText[index]
+                ? Colors.white
+                : Colors.black,
+            backgroundColor: _updatedBranch == buttonsText[index]
+                ? Colors.black
+                : Colors.white,
+          ),
+          child: Text(
+            buttonsText[index],
+            style: GoogleFonts.manrope(
+              fontWeight: FontWeight.w400,
+              fontSize: _updatedBranch == buttonsText[index] ? 20 : 15,
             ),
           ),
         );
@@ -133,8 +133,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
               onButtonPressed(index + 1);
             },
             style: ElevatedButton.styleFrom(
-              shape:
-                  const StarBorder.polygon(sides: 4, squash: 1, rotation: 100),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  side: const BorderSide(width: 1)),
               foregroundColor:
                   _updatedSem == index + 1 ? Colors.white : Colors.black,
               backgroundColor:
@@ -154,9 +155,46 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
 
     return Scaffold(
-      appBar: appBar,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 20, right: 20),
+        child: FloatingActionButton(
+            elevation: 10,
+            backgroundColor: Colors.black,
+            onPressed: () {
+              if (_updatedName.text.trim().isEmpty) {
+                showSnackBar(context, "plz enter your name");
+              } else {
+                // save data to auth0 and local storage
+
+                // profile screen
+                setState(() {
+                  username = _updatedName;
+                  semester = _updatedSem;
+                  branch = _updatedBranch;
+                });
+                Navigator.pop(context);
+              }
+            },
+            child: Icon(MdiIcons.contentSaveAll)),
+      ),
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(top: 20, left: 10),
+          child: Text(
+            'Update Details',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
+      ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 100, right: 30, left: 30),
+        padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
         children: [
           // name field
 
@@ -176,27 +214,35 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
           Padding(
             padding: const EdgeInsets.only(top: 10, right: 20),
-            child: TextFormField(
-              controller: _updatedName,
-              keyboardType: TextInputType.name,
-              textAlign: TextAlign.justify,
-              scrollPhysics: const BouncingScrollPhysics(),
-              style: const TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                constraints: const BoxConstraints(
-                  minHeight: 50,
-                  maxHeight: 100,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: const BorderSide(width: 1)),
+              ),
+              child: TextFormField(
+                controller: _updatedName,
+                keyboardType: TextInputType.name,
+                textAlign: TextAlign.justify,
+                scrollPhysics: const BouncingScrollPhysics(),
+                style: const TextStyle(color: Colors.black),
+                decoration: const InputDecoration(
+                  constraints: BoxConstraints(
+                    minHeight: 50,
+                    maxHeight: 100,
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: InputBorder.none,
+                  hintText: "  janedoe_12;",
+                  labelStyle: TextStyle(color: Colors.transparent),
                 ),
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100)),
-                hintText: "  janedoe_12;",
-                labelStyle: const TextStyle(color: Colors.blue),
               ),
             ),
           ),
-          const SizedBox(height: 70),
+          const SizedBox(height: 50),
 
           // sem
 
@@ -213,18 +259,16 @@ class _UpdateProfileState extends State<UpdateProfile> {
           ),
 
           Wrap(children: buttons1),
-          const SizedBox(height: 70),
+          const SizedBox(height: 50),
 
           // branch
 
-          Center(
-            child: Text(
-              "Branch",
-              softWrap: true,
-              style: GoogleFonts.manrope(
-                fontSize: 30,
-                fontWeight: FontWeight.w300,
-              ),
+          Text(
+            "Branch",
+            softWrap: true,
+            style: GoogleFonts.manrope(
+              fontSize: 30,
+              fontWeight: FontWeight.w300,
             ),
           ),
           const SizedBox(height: 20),
@@ -233,11 +277,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Center(
-              child: Wrap(
-                spacing: wdth * 0.07,
-                children: buttons,
-              ),
+            child: Wrap(
+              spacing: wdth * 0.07,
+              children: buttons,
             ),
           ),
         ],

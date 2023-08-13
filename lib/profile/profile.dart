@@ -28,24 +28,25 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    PreferredSize appBar = PreferredSize(
-      preferredSize: const Size.fromHeight(56.5),
-      child: AppBar(
-        toolbarHeight: 56.5,
-        leading: IconButton(
-          iconSize: 24.5,
-          icon: const FaIcon(Icons.abc),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Colors.grey,
-        shadowColor: Colors.transparent,
-      ),
-    );
-
     return Scaffold(
-      appBar: appBar,
+      appBar: AppBar(
+        title: const Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 20, left: 10),
+            child: Text(
+              'Profile',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+        forceMaterialTransparency: true,
+        toolbarHeight: 70,
+      ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
