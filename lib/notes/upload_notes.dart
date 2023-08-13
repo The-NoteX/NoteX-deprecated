@@ -49,7 +49,6 @@ class _UploadNotesState extends State<UploadNotes> {
 
   @override
   Widget build(BuildContext context) {
-
     // List of Courses
 
     List<String> tags = ["CSE", "ECE"];
@@ -254,10 +253,10 @@ class _UploadNotesState extends State<UploadNotes> {
                     _tag.toString(),
                     filePath!,
                     _subject.text,
-                    _sem,
+                    0,
                     _fileName.toString(),
                     username,
-                    1,
+                    _sem.toString(),
                   );
 
                   if (uploaded == "true") {

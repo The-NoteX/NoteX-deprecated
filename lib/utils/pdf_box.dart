@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../notes/comment.dart';
 
@@ -17,6 +18,8 @@ class PdfBox extends StatefulWidget {
   @override
   State<PdfBox> createState() => _PdfBoxState();
 }
+
+bool _liked = false;
 
 class _PdfBoxState extends State<PdfBox> {
   @override
@@ -76,7 +79,10 @@ class _PdfBoxState extends State<PdfBox> {
                     ),
                   ),
                   TextButton(
-                      onPressed: () => {},
+                      onPressed: () async {
+                        final url = Uri.parse(widget.snap['pdfurl']);
+                        await launchUrl(url);
+                      },
                       child: Text(
                         "Open PDF",
                         style: GoogleFonts.manrope(
@@ -136,8 +142,32 @@ class _PdfBoxState extends State<PdfBox> {
                         onPressed: () async {},
                       ),
                       TextButton(
-                        child: Icon(MdiIcons.thumbUp),
-                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            _liked
+                                ? Icon(
+                                    MdiIcons.thumbUp,
+                                    color: Colors.black,
+                                  )
+                                : Icon(
+                                    MdiIcons.thumbUpOutline,
+                                    color: Colors.black,
+                                  ),
+                            const SizedBox(width: 5),
+                            _liked
+                                ? Text(
+                                    '${widget.snap['likes'] + 1}'.toString(),
+                                  )
+                                : Text(
+                                    widget.snap['likes'].toString(),
+                                  )
+                          ],
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _liked = !_liked;
+                          });
+                        },
                       ),
                     ],
                   )

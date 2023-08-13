@@ -11,7 +11,7 @@ final storageRef = FirebaseStorage.instance.ref();
 final firestore = FirebaseFirestore.instance;
 
 Future<String> uploadPdf(String tags, String filePath, String subject,
-    int likes, String filename, String author, sem) async {
+    int likes, String filename, String author, String sem) async {
   try {
     final mountainsRef = storageRef.child("Notes");
 
