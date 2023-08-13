@@ -37,6 +37,13 @@ class _NavigationState extends State<Navigation> {
             selectedIcon: Icon(size: 30, Icons.lightbulb, color: Colors.white),
             label: "Hackathons",
           ),
+
+          NavigationDestination(
+            icon: Icon(
+                size: 30, Icons.add_road_outlined, color: Colors.white),
+            selectedIcon: Icon(size: 30, Icons.add_road_outlined, color: Colors.white),
+            label: "Internships",
+          ),
           NavigationDestination(
             icon: Icon(size: 30, Icons.note_alt_outlined, color: Colors.white),
             selectedIcon: Icon(size: 30, Icons.note_alt, color: Colors.white),

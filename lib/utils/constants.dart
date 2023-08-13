@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notex/hackathon/explore_hackatho.dart';
+import 'package:notex/internship/internship.dart';
 import 'package:notex/notes/explore_notes.dart';
 import 'package:notex/profile/profile.dart';
 
@@ -18,8 +19,10 @@ showSnackBar(BuildContext context, String content) {
 
 List<Widget> pages = [
   const ExploreNotes(),
-  const UploadNotes(),
+  
   const ExploreHackathons(),
+   InternshipPage(),
+  const UploadNotes(),
   const Profile(),
 ];
 

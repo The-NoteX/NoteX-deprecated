@@ -8,6 +8,8 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
+
+  
   auth0_flutter: ^1.2.1
   cloud_firestore: ^4.8.4
   confetti: ^0.7.0
@@ -26,6 +28,7 @@ dependencies:
   path_provider: ^2.1.0
   provider: ^6.0.5
   read_pdf_text: ^0.2.1
+  url_launcher: ^6.1.12
   uuid: ^3.0.7
 
 dev_dependencies:
