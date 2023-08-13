@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../utils/hack_box.dart';
 import 'api_hackathon.dart';
@@ -46,13 +47,19 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
             for (var item in data)
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: HackBox(
-                  name: item['name'],
-                  link: item['link'],
-                  image: item['image'],
-                  date: item['date'],
-                  location: item['location'],
-                  mode: item['mode'],
+                child: GestureDetector(
+                  onTap: () async {
+                    final Uri url = Uri.parse(item['link']);
+                    await launchUrl(url);
+                  },
+                  child: HackBox(
+                    name: item['name'],
+                    link: item['link'],
+                    image: item['image'],
+                    date: item['date'],
+                    location: item['location'],
+                    mode: item['mode'],
+                  ),
                 ),
               ),
           ],

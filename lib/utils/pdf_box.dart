@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PdfBox extends StatefulWidget {
   final snap;
@@ -100,7 +101,9 @@ class _PdfBoxState extends State<PdfBox> {
                             iconSize: MaterialStatePropertyAll(20),
                             foregroundColor:
                                 MaterialStatePropertyAll(Colors.black)),
-                        child: SizedBox(width: 20.0,child: const FaIcon(FontAwesomeIcons.shareNodes)),
+                        child: const SizedBox(
+                            width: 20.0,
+                            child: FaIcon(FontAwesomeIcons.shareNodes)),
                         onPressed: () {},
                       ),
                       TextButton(
@@ -120,7 +123,7 @@ class _PdfBoxState extends State<PdfBox> {
                         onPressed: () {},
                       ),
                       TextButton(
-                        child: Icon(Icons.thumb_up),
+                        child: const Icon(Icons.thumb_up),
                         onPressed: () {},
                       ),
                     ],
