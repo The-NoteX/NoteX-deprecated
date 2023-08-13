@@ -3,7 +3,7 @@ import 'package:notex/hackathon/explore_hackatho.dart';
 import 'package:notex/notes/explore_notes.dart';
 import 'package:notex/profile/profile.dart';
 
-import '../upload_notes.dart';
+import '../notes/upload_notes.dart';
 
 Color backgroundColor = Colors.amberAccent.shade200;
 
@@ -25,3 +25,7 @@ List<Widget> pages = [
 
 late double hght;
 late double wdth;
+
+late final username;
+late final semester;
+late final branch;

@@ -112,6 +112,7 @@ class _BranchState extends State<Branch> {
               if (_branch.isEmpty) {
                 showSnackBar(context, "plz choose a branch");
               } else {
+                branch = _branch;
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Navigation()),
                 );

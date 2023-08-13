@@ -58,6 +58,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
               // save data to auth0 and local storage
 
               // profile screen
+              setState(() {
+                username = _updatedName;
+                semester = _updatedSem;
+                branch = _updatedBranch;
+              });
               Navigator.pop(context);
             }
           },

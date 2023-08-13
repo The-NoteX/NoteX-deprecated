@@ -23,6 +23,8 @@ dependencies:
   google_fonts: ^5.1.0
   path_provider: ^2.1.0
   provider: ^6.0.5
+  read_pdf_text: ^0.2.1
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

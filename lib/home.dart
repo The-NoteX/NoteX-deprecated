@@ -154,8 +154,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         _credentials = credentials;
                       });
 
-                      // print(credentials.idToken);
-                      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Name()));
+                      // if () {
+
+                      // } else {
+
+                      // }
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const Name()));
                       // ignore: use_build_context_synchronously
                       await Navigator.pushReplacement(
                           context,

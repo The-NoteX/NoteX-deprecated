@@ -94,6 +94,7 @@ class _NameState extends State<Name> {
               if (_textController.text.trim().isEmpty) {
                 showSnackBar(context, "Plz enter your name");
               } else {
+                username = _textController.text.trim();
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => const Semester()));
               }

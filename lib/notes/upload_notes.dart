@@ -14,10 +14,13 @@ class UploadNotes extends StatefulWidget {
 }
 
 class _UploadNotesState extends State<UploadNotes> {
-  int _tag = 0;
+  String _tag = "";
+  String? _fileName;
+  String? filePath;
+  bool _isSelected = false;
   final TextEditingController _subject = TextEditingController();
 
-  void onButtonPressed(int index) {
+  void onButtonPressed(String index) {
     setState(() {
       _tag = index;
     });
@@ -31,7 +34,7 @@ class _UploadNotesState extends State<UploadNotes> {
 
     if (result != null) {
       String filePath = result.files.first.path!;
-
+      _fileName = result.files.first.name;
       return filePath;
     }
     return null;
@@ -71,7 +74,7 @@ class _UploadNotesState extends State<UploadNotes> {
     );
 
     // List of Courses
-    List<String> tags = ["CSE", "ECE", "Dev"];
+    List<String> tags = ["CSE", "ECE"];
 
     List<Widget> tagsButton = List.generate(
       tags.length,
@@ -80,18 +83,21 @@ class _UploadNotesState extends State<UploadNotes> {
           padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
           child: ElevatedButton(
             onPressed: () {
-              onButtonPressed(index + 1);
+              onButtonPressed(tags[index]);
             },
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(70, 50),
-              foregroundColor: _tag == index + 1 ? Colors.white : Colors.black,
-              backgroundColor: _tag == index + 1 ? Colors.black : Colors.white,
+              fixedSize: const Size(100, 50),
+              shape: const StadiumBorder(),
+              foregroundColor:
+                  _tag == tags[index] ? Colors.white : Colors.black,
+              backgroundColor:
+                  _tag == tags[index] ? Colors.black : Colors.white,
             ),
             child: Text(
               tags[index],
               style: GoogleFonts.manrope(
                 fontWeight: FontWeight.w600,
-                fontSize: _tag == index + 1 ? 18 : 13,
+                fontSize: _tag == tags[index] ? 20 : 15,
               ),
             ),
           ),
@@ -106,10 +112,15 @@ class _UploadNotesState extends State<UploadNotes> {
           children: [
             // tag
 
-            Text("Select Tags", style: GoogleFonts.manrope(fontSize: 25)),
+            Center(
+              child: Text(
+                "Select Tags",
+                style: GoogleFonts.manrope(fontSize: 25),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(children: tagsButton),
+              child: Wrap(spacing: 20, children: tagsButton),
             ),
             const SizedBox(height: 75),
 
@@ -145,7 +156,7 @@ class _UploadNotesState extends State<UploadNotes> {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 50),
 
             // file browse
 
@@ -154,17 +165,69 @@ class _UploadNotesState extends State<UploadNotes> {
                 onTap: () async {
                   if (_subject.text.trim().isEmpty) {
                     showSnackBar(context, "Plz enter a subject");
-                  } else if (_tag == 0) {
+                  } else if (_tag.isEmpty) {
                     showSnackBar(context, "Plz select a tag");
                   } else {
-                    String? filePath = await pickFiles();
-
-                    await uploadPdf("our pdfs", filePath!);
+                    filePath = await pickFiles();
+                    if (filePath!.isNotEmpty) {
+                      setState(() {
+                        _isSelected = true;
+                      });
+                    }
                   }
                 },
-                child: const FaIcon(
-                  FontAwesomeIcons.fileArrowUp,
-                  size: 100,
+                child: _isSelected
+                    ? const FaIcon(
+                        FontAwesomeIcons.fileCircleCheck,
+                        size: 100,
+                      )
+                    : const FaIcon(
+                        FontAwesomeIcons.fileArrowUp,
+                        size: 100,
+                      ),
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            // upload
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 45),
+              child: InkWell(
+                overlayColor: const MaterialStatePropertyAll(
+                  Color.fromARGB(255, 88, 245, 245),
+                ),
+                borderRadius: BorderRadius.circular(50),
+                onTap: () async {
+                  String uploaded = await uploadPdf(
+                    _tag.toString(),
+                    filePath!,
+                    _subject.text,
+                    0,
+                    _fileName.toString(),
+                  );
+
+                  if (uploaded == "true") {
+                    // ignore: use_build_context_synchronously
+                    showSnackBar(context, "Uploaded");
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const FaIcon(FontAwesomeIcons.userPen),
+                      const SizedBox(width: 15),
+                      Text(
+                        "Update Details",
+                        style: GoogleFonts.manrope(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

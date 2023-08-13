@@ -119,6 +119,7 @@ class _SemesterState extends State<Semester> {
               if (_sem == 0) {
                 showSnackBar(context, "Plz select a semester");
               } else {
+                semester = _sem;
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Branch()),
                 );
