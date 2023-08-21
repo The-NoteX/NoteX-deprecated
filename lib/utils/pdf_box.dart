@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:notex/notes/comment.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../notes/comment.dart';
-
 class PdfBox extends StatefulWidget {
-  final snap;
+  final dynamic snap;
   const PdfBox({
     super.key,
     required this.snap,
@@ -24,158 +23,169 @@ bool _liked = false;
 class _PdfBoxState extends State<PdfBox> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20.0),
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 223, 223, 223),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            width: 2,
-            color: Colors.black,
-          )),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          border: Border.all(width: 2),
+          color: const Color.fromARGB(255, 233, 233, 233),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+        ),
+        child: Column(
+          children: [
+            // subject
+
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
                 widget.snap['subject'],
                 style: GoogleFonts.manrope(
-                    fontSize: 25, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                widget.snap['author'],
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+
+            // author
+
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "~${widget.snap['author']}",
                 style: GoogleFonts.manrope(
-                    fontSize: 17, fontWeight: FontWeight.w500),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w200,
+                ),
+              ),
+            ),
+            const SizedBox(height: 25),
+
+            Row(
+              children: [
+                // tag
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  width: 90,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    border: Border.all(width: 1.5),
+                    borderRadius: const BorderRadius.all(Radius.circular(25)),
                   ),
-                  Container(
-                    width: 90,
-                    height: 40,
+                  child: Center(
+                    child: Text(
+                      widget.snap['tags'],
+                      style: GoogleFonts.manrope(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+
+                // semester
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 105),
+                  child: Text(
+                    "Semester ${widget.snap['semester']}",
+                    style: GoogleFonts.manrope(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+
+            // buttons
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // view pdf
+
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(
+                      Uri.parse(widget.snap['pdfurl']),
+                      mode: LaunchMode.externalApplication,
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    width: 120,
+                    height: 45,
                     decoration: BoxDecoration(
-                        color: backgroundColor,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(width: 1.7)),
+                      color: Colors.white,
+                      border: Border.all(width: 1.5),
+                      borderRadius: const BorderRadius.all(Radius.circular(25)),
+                    ),
                     child: Center(
                       child: Text(
-                        widget.snap['tags'],
+                        "View PDF",
                         style: GoogleFonts.manrope(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                      onPressed: () async {
-                        final url = Uri.parse(widget.snap['pdfurl']);
-                        await launchUrl(url);
-                      },
-                      child: Text(
-                        "Open PDF",
-                        style: GoogleFonts.manrope(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
-                      ))
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30.0),
-                    child: Text(
-                      'Semester ${widget.snap['semester']}',
-                      style: GoogleFonts.manrope(
-                          fontSize: 25, fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  Wrap(
-                    children: [
-                      TextButton(
-                        style: const ButtonStyle(
-                            iconSize: MaterialStatePropertyAll(20),
-                            foregroundColor:
-                                MaterialStatePropertyAll(Colors.black)),
-                        child:
-                            SizedBox(width: 20.0, child: Icon(MdiIcons.share)),
-                        onPressed: () {
-                          final url = widget.snap['pdfurl'];
-
-                          Share.share(url);
-                        },
-                      ),
-                      TextButton(
-                        style: const ButtonStyle(
-                            iconSize: MaterialStatePropertyAll(20),
-                            foregroundColor:
-                                MaterialStatePropertyAll(Colors.black)),
-                        child: FaIcon(MdiIcons.comment),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  Comments(snap: widget.snap)));
-                        },
-                      ),
-                    ],
-                  ),
-                  Wrap(
-                    children: [
-                      TextButton(
-                        style: const ButtonStyle(
-                            iconSize: MaterialStatePropertyAll(20),
-                            foregroundColor:
-                                MaterialStatePropertyAll(Colors.black)),
-                        child: Icon(MdiIcons.download),
-                        onPressed: () async {},
-                      ),
-                      TextButton(
-                        child: Row(
-                          children: [
-                            _liked
-                                ? Icon(
-                                    MdiIcons.thumbUp,
-                                    color: Colors.black,
-                                  )
-                                : Icon(
-                                    MdiIcons.thumbUpOutline,
-                                    color: Colors.black,
-                                  ),
-                            const SizedBox(width: 5),
-                            _liked
-                                ? Text(
-                                    '${widget.snap['likes'] + 1}'.toString(),
-                                  )
-                                : Text(
-                                    widget.snap['likes'].toString(),
-                                  )
-                          ],
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _liked = !_liked;
-                          });
-                        },
                       ),
-                    ],
-                  )
-                ],
-              )
-            ],
-          )
-        ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 16),
+                // icons
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Share.share(widget.snap['pdfurl']);
+                      },
+                      icon: Icon(MdiIcons.send),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Comments(snap: widget.snap),
+                          ),
+                        );
+                      },
+                      icon: const Icon(FontAwesomeIcons.comment),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(FontAwesomeIcons.download),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _liked = !_liked;
+                            });
+                          },
+                          icon: _liked
+                              ? const Icon(FontAwesomeIcons.solidThumbsUp)
+                              : const Icon(FontAwesomeIcons.thumbsUp),
+                        ),
+                        Text(widget.snap['likes'].toString())
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

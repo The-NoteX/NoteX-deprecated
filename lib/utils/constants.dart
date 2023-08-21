@@ -19,7 +19,7 @@ showSnackBar(BuildContext context, String content) {
 
 List<Widget> pages = [
   const ExploreNotes(),
-  InternshipPage(),
+  const InternshipPage(),
   const ExploreHackathons(),
   const UploadNotes(),
   const Profile(),
@@ -28,6 +28,6 @@ List<Widget> pages = [
 late double hght;
 late double wdth;
 
-late final username;
-late final semester;
-late final branch;
+late dynamic username;
+late dynamic semester;
+late dynamic branch;

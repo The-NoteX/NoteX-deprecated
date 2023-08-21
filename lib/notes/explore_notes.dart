@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
 import '../utils/pdf_box.dart';
 
 class ExploreNotes extends StatefulWidget {
@@ -11,13 +10,18 @@ class ExploreNotes extends StatefulWidget {
   State<ExploreNotes> createState() => _ExploreNotesState();
 }
 
+int _selectedIndex = 0;
+
 class _ExploreNotesState extends State<ExploreNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(top: 3.0, left: 10,),
+          padding: EdgeInsets.only(
+            top: 3.0,
+            left: 10,
+          ),
           child: Text(
             'Explore Notes',
             style: TextStyle(
@@ -41,17 +45,27 @@ class _ExploreNotesState extends State<ExploreNotes> {
               );
 
             default:
-              return ListView.builder(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 10,
-                    ),
-                    child: PdfBox(snap: snapshot.data!.docs[index].data()),
-                  );
-                },
+              // return ListView.builder(
+              //   itemCount: snapshot.data!.docs.length,
+              //   itemBuilder: (context, index) {
+              //     return SafeArea(
+              //       minimum: const EdgeInsets.symmetric(
+              //           horizontal: 10, vertical: 2.5),
+              //       child: PdfBox(snap: snapshot.data!.docs[index].data()),
+              //     );
+              //   },
+              // );
+              return ListWheelScrollView.useDelegate(
+                physics: const BouncingScrollPhysics(),
+                itemExtent: 275,
+                // squeeze: 2,
+                diameterRatio: 8,
+                childDelegate: ListWheelChildBuilderDelegate(
+                  childCount: snapshot.data!.docs.length,
+                  builder: (context, index) {
+                    return PdfBox(snap: snapshot.data!.docs[index].data());
+                  },
+                ),
               );
           }
         },
