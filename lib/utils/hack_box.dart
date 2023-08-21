@@ -34,68 +34,71 @@ class _HackBoxState extends State<HackBox> {
             width: 2,
             color: Colors.black,
           )),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(width: 2.0),
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-              ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                child: Image.network(
-                  widget.image,
-                  scale: 2.5,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                widget.date,
-                style: GoogleFonts.manrope(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
-        ),
-        Container(
-          constraints: const BoxConstraints(maxWidth: 175),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
             children: [
-              Text(
-                widget.name,
-                style: GoogleFonts.manrope(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  border: Border.all(width: 2.0),
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  child: Image.network(
+                    widget.image,
+                    scale: 2.5,
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 60.0,
-              ),
-              Text(
-                widget.location,
-                style: GoogleFonts.manrope(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                widget.mode,
-                style: GoogleFonts.manrope(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  widget.date,
+                  style: GoogleFonts.manrope(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               )
             ],
           ),
-        )
-      ]),
+          Container(
+            constraints: const BoxConstraints(maxWidth: 175),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  widget.name,
+                  style: GoogleFonts.manrope(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 60.0,
+                ),
+                Text(
+                  widget.location,
+                  style: GoogleFonts.manrope(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  widget.mode,
+                  style: GoogleFonts.manrope(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

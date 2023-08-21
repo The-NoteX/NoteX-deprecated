@@ -6,7 +6,7 @@ import 'package:notex/utils/comment_bar.dart';
 import 'package:notex/utils/constants.dart';
 
 class Comments extends StatefulWidget {
-  final snap;
+  final dynamic snap;
   const Comments({super.key, required this.snap});
 
   @override

@@ -19,7 +19,7 @@ class _UploadNotesState extends State<UploadNotes> {
   String? _fileName;
   String? filePath;
   bool _isSelected = false;
-  final TextEditingController _subject = TextEditingController();
+  final TextEditingController _topic = TextEditingController();
 
   void onButtonPressed(String index) {
     setState(() {
@@ -143,7 +143,7 @@ class _UploadNotesState extends State<UploadNotes> {
             // tag
 
             Text(
-              "Name",
+              "Topic",
               softWrap: true,
               style: GoogleFonts.manrope(
                 fontSize: 25,
@@ -151,26 +151,6 @@ class _UploadNotesState extends State<UploadNotes> {
               ),
             ),
             const SizedBox(height: 10),
-
-            // TextFormField(
-            //   controller: _subject,
-            //   keyboardType: TextInputType.text,
-            //   textAlign: TextAlign.justify,
-            //   scrollPhysics: const BouncingScrollPhysics(),
-            //   style: const TextStyle(color: Colors.black),
-            //   decoration: InputDecoration(
-            //     constraints: const BoxConstraints(
-            //       minHeight: 50,
-            //       maxHeight: 100,
-            //     ),
-            //     fillColor: Colors.white,
-            //     filled: true,
-            //     border: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(100)),
-            //     hintText: "Discrete Mathematics ",
-            //     labelStyle: const TextStyle(color: Colors.blue),
-            //   ),
-            // ),
 
             Padding(
               padding: const EdgeInsets.only(top: 10, right: 20),
@@ -183,7 +163,7 @@ class _UploadNotesState extends State<UploadNotes> {
                       side: const BorderSide(width: 1)),
                 ),
                 child: TextFormField(
-                  controller: _subject,
+                  controller: _topic,
                   keyboardType: TextInputType.name,
                   textAlign: TextAlign.justify,
                   scrollPhysics: const BouncingScrollPhysics(),
@@ -196,7 +176,7 @@ class _UploadNotesState extends State<UploadNotes> {
                     fillColor: Colors.white,
                     filled: true,
                     border: InputBorder.none,
-                    hintText: "Name",
+                    hintText: "Topic",
                     labelStyle: TextStyle(color: Colors.transparent),
                   ),
                 ),
@@ -242,10 +222,10 @@ class _UploadNotesState extends State<UploadNotes> {
 
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child: Row(
-                children: [InkWell(
+              child: Row(children: [
+                InkWell(
                   onTap: () async {
-                    if (_subject.text.trim().isEmpty) {
+                    if (_topic.text.trim().isEmpty) {
                       showSnackBar(context, "Plz enter a subject");
                     } else if (_tag.isEmpty) {
                       showSnackBar(context, "Plz select a tag");
@@ -261,60 +241,67 @@ class _UploadNotesState extends State<UploadNotes> {
                   child: _isSelected
                       ? const FaIcon(
                           FontAwesomeIcons.fileCircleCheck,
-                          size:30,
+                          size: 30,
                         )
                       : const FaIcon(
                           FontAwesomeIcons.fileArrowUp,
                           size: 30,
                         ),
                 ),
-              const SizedBox(height: 30),
-            
-              // upload
-            
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 45),
-                child: InkWell(
-                  overlayColor: const MaterialStatePropertyAll(
-                    Color.fromARGB(255, 88, 245, 245),
-                  ),
-                  borderRadius: BorderRadius.circular(50),
-                  onTap: () async {
-                    String uploaded = await uploadPdf(
-                      _tag.toString(),
-                      filePath!,
-                      _subject.text,
-                      0,
-                      _fileName.toString(),
-                      username,
-                      _sem.toString(),
-                    );
-            
-                    if (uploaded == "true") {
-                      // ignore: use_build_context_synchronously
-                      showSnackBar(context, "Uploaded");
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const FaIcon(FontAwesomeIcons.upload),
-                        const SizedBox(width: 15),
-                        Text(
-                          "Upload",
-                          style: GoogleFonts.manrope(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
+                const SizedBox(height: 30),
+
+                // upload
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 45),
+                  child: InkWell(
+                    overlayColor: const MaterialStatePropertyAll(
+                      Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
+                    onTap: () async {
+                      String uploaded = await uploadPdf(
+                        _tag.toString(),
+                        filePath!,
+                        _topic.text,
+                        0,
+                        _fileName.toString(),
+                        username.toString(),
+                        _sem.toString(),
+                      );
+
+                      if (uploaded == "true") {
+                        // ignore: use_build_context_synchronously
+                        showSnackBar(context, "Uploaded");
+                        setState(() {
+                          _topic.clear();
+                          _tag = "";
+                          _sem = 0;
+                          _isSelected = false;
+                        });
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const FaIcon(FontAwesomeIcons.upload),
+                          const SizedBox(width: 15),
+                          Text(
+                            "Upload",
+                            style: GoogleFonts.manrope(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 40),
-                      ],
+                          const SizedBox(height: 40),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),]),
+              ]),
             ),
           ],
         ),

@@ -12,7 +12,7 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
-  final TextEditingController _updatedName = TextEditingController();
+  final _updatedName = TextEditingController();
   int _updatedSem = 0;
   String _updatedBranch = "";
 
@@ -29,49 +29,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
         _updatedBranch = index;
       });
     }
-
-// app bar
-
-    PreferredSize appBar = PreferredSize(
-      preferredSize: const Size.fromHeight(56.5),
-      child: AppBar(
-        title: Container(
-          alignment: const Alignment(-0.2, -0.9),
-          child: Text(
-            "Update Details",
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        toolbarHeight: 56.5,
-        leading: IconButton(
-          iconSize: 24.5,
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            if (_updatedName.text.trim().isEmpty) {
-              showSnackBar(context, "plz enter your name");
-            } else {
-              // save data to auth0 and local storage
-
-              // profile screen
-              setState(() {
-                username = _updatedName;
-                semester = _updatedSem;
-                branch = _updatedBranch;
-              });
-              Navigator.pop(context);
-            }
-          },
-        ),
-        backgroundColor: backgroundColor,
-        shadowColor: Colors.transparent,
-      ),
-    );
 
     // buttons list
 
@@ -160,7 +117,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
         child: FloatingActionButton(
             elevation: 10,
             backgroundColor: Colors.black,
-            onPressed: () {
+            onPressed: () async {
               if (_updatedName.text.trim().isEmpty) {
                 showSnackBar(context, "plz enter your name");
               } else {
@@ -169,7 +126,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 // profile screen
                 setState(() {
                   username = _updatedName;
-                  semester = _updatedSem;
+                  semester = _updatedSem.toInt();
                   branch = _updatedBranch;
                 });
                 Navigator.pop(context);

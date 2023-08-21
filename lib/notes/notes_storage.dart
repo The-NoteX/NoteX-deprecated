@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:uuid/uuid.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,15 +16,15 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
 
     File file = File(filePath);
 
-    await mountainsRef.putFile(file);
-
-    final pdfText = getPdfText(filePath);
+    var upload = await mountainsRef.putFile(file);
     const uuid = Uuid();
-
-    String uid = uuid.v5(Uuid.NAMESPACE_OID, pdfText.toString());
-
-    final url =
+    var namespace = Uuid.NAMESPACE_URL;
+    var url =
         await FirebaseStorage.instance.ref().child('Notes').getDownloadURL();
+
+    var urlSize = '$url?size=${upload.totalBytes}';
+
+    var uid = uuid.v5(namespace, urlSize);
 
     firestore.collection("pdf").doc(uid).set({
       "author": author,
@@ -37,18 +36,7 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
       "semester": sem,
       "docid": uid,
     });
-
     return "true";
-  } catch (e) {
-    return e.toString();
-  }
-}
-
-Future<String> getPdfText(String path) async {
-  String text = "";
-  try {
-    text = await ReadPdfText.getPDFtext(path);
-    return text;
   } catch (e) {
     return e.toString();
   }

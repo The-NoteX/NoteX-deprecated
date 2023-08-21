@@ -26,32 +26,38 @@ class _NavigationState extends State<Navigation> {
             _page = value;
           });
         },
-        destinations:  [
+        destinations: [
           NavigationDestination(
-            icon: Icon(size: 30, MdiIcons.homeVariantOutline, color: Colors.white),
-            selectedIcon: Icon(size: 30, MdiIcons.homeVariant, color: Colors.white),
+            icon: Icon(
+                size: 30, MdiIcons.homeVariantOutline, color: Colors.white),
+            selectedIcon:
+                Icon(size: 30, MdiIcons.homeVariant, color: Colors.white),
             label: "Home",
           ),
           NavigationDestination(
-            icon: Icon(
-                size: 30, MdiIcons.starBox, color: Colors.white),
-            selectedIcon: Icon(size: 30, MdiIcons.stackOverflow, color: Colors.white),
+            icon: Icon(size: 30, MdiIcons.starBox, color: Colors.white),
+            selectedIcon:
+                Icon(size: 30, MdiIcons.stackOverflow, color: Colors.white),
             label: "Internships",
           ),
           NavigationDestination(
             icon: Icon(
                 size: 30, MdiIcons.lightbulbOnOutline, color: Colors.white),
-            selectedIcon: Icon(size: 30, MdiIcons.lightbulbOn, color: Colors.white),
+            selectedIcon:
+                Icon(size: 30, MdiIcons.lightbulbOn, color: Colors.white),
             label: "Hackathons",
           ),
-
           NavigationDestination(
             icon: Icon(size: 30, MdiIcons.noteEditOutline, color: Colors.white),
             selectedIcon: Icon(size: 30, MdiIcons.note, color: Colors.white),
             label: "Upload",
           ),
-          NavigationDestination(
-            icon: Icon(size: 30, MdiIcons.faceManProfile, color: Colors.white,),
+          const NavigationDestination(
+            icon: Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assests/th.jpeg"),
+              ),
+            ),
             label: "Profile",
           ),
         ],

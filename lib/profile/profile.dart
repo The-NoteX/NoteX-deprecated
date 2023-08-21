@@ -2,7 +2,6 @@ import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/profile/update_profile.dart';
 import 'package:notex/utils/constants.dart';
 
@@ -54,12 +53,11 @@ class _ProfileState extends State<Profile> {
         children: [
           // profile pic
 
-          Center(
-            child: Icon(size: 200, MdiIcons.faceManProfile, color: Colors.black,),
-            // child: CircleAvatar(
-            //   radius: 100,
-            //   backgroundImage: AssetImage("assests/th.jpeg"),
-            // ),
+          const Center(
+            child: CircleAvatar(
+              radius: 100,
+              backgroundImage: AssetImage("assests/th.jpeg"),
+            ),
           ),
           const SizedBox(height: 20),
 
