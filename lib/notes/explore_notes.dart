@@ -10,8 +10,6 @@ class ExploreNotes extends StatefulWidget {
   State<ExploreNotes> createState() => _ExploreNotesState();
 }
 
-int _selectedIndex = 0;
-
 class _ExploreNotesState extends State<ExploreNotes> {
   @override
   Widget build(BuildContext context) {

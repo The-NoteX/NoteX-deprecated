@@ -16,11 +16,16 @@ Future<String> uploadPdf(String tags, String filePath, String subject,
 
     File file = File(filePath);
 
-    var upload = await mountainsRef.putFile(file);
+    var upload =
+        await mountainsRef.child('author').child('filename').putFile(file);
     const uuid = Uuid();
     var namespace = Uuid.NAMESPACE_URL;
-    var url =
-        await FirebaseStorage.instance.ref().child('Notes').getDownloadURL();
+    var url = await FirebaseStorage.instance
+        .ref()
+        .child('Notes')
+        .child('author')
+        .child('filename')
+        .getDownloadURL();
 
     var urlSize = '$url?size=${upload.totalBytes}';
 
@@ -62,7 +67,6 @@ Future<String> postComment(String comment, String docId) async {
   var json = jsonDecode(response.body);
   var value = json['predict'];
 
-  print(value);
   if (value == 1) {
     String commentId = const Uuid().v1();
 
