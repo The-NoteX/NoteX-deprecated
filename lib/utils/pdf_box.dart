@@ -1,9 +1,14 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+import 'package:android_x_storage/android_x_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/notes/comment.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,6 +26,20 @@ class PdfBox extends StatefulWidget {
 bool _liked = false;
 
 class _PdfBoxState extends State<PdfBox> {
+  Future<String> downloadPdf() async {
+    try {
+      final dir = await AndroidXStorage().getDownloadsDirectory();
+
+      final response = await http.get(Uri.parse(widget.snap['pdfurl']));
+      final file = File(
+          '$dir/${widget.snap['subject']} by ${widget.snap['author']}.pdf');
+      await file.writeAsBytes(response.bodyBytes);
+      return "true";
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -161,7 +180,59 @@ class _PdfBoxState extends State<PdfBox> {
                       icon: const Icon(FontAwesomeIcons.comment),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        bool status = await Permission.storage.isDenied;
+                        print(status);
+
+                        if (status) {
+                          await Permission.storage.request();
+                          bool granted =
+                              await Permission.storage.request().isGranted;
+                          if (granted) {
+                            // ignore: use_build_context_synchronously
+                            showCupertinoDialog(
+                              context: context,
+                              builder: (context) {
+                                return const Center(
+                                    child: SizedBox(
+                                  height: 5,
+                                  child: LinearProgressIndicator(
+                                    backgroundColor: Colors.transparent,
+                                    color: Colors.cyan,
+                                  ),
+                                ));
+                              },
+                            );
+
+                            await downloadPdf();
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                            // ignore: use_build_context_synchronously
+                            showSnackBar(context, "downloaded");
+                          }
+                        } else {
+                          // ignore: use_build_context_synchronously
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                  child: SizedBox(
+                                height: 5,
+                                child: LinearProgressIndicator(
+                                  backgroundColor: Colors.transparent,
+                                  color: Colors.cyan,
+                                ),
+                              ));
+                            },
+                          );
+
+                          await downloadPdf();
+                          // ignore: use_build_context_synchronously
+                          Navigator.pop(context);
+                          // ignore: use_build_context_synchronously
+                          showSnackBar(context, "downloaded");
+                        }
+                      },
                       icon: const Icon(FontAwesomeIcons.download),
                     ),
                     Row(

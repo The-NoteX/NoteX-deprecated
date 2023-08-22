@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
+  android_x_storage: ^1.0.0
   auth0_flutter: ^1.2.1
   cloud_firestore: ^4.8.4
   confetti: ^0.7.0
@@ -24,6 +25,7 @@ dependencies:
   intl: ^0.18.1
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.1.0
+  permission_handler: ^10.4.3
   provider: ^6.0.5
   read_pdf_text: ^0.2.1
   share_plus: ^7.1.0
