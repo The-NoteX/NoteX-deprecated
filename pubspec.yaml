@@ -17,12 +17,15 @@ dependencies:
   firebase_storage: ^11.2.5
   flutter:
     sdk: flutter
+  flutter_downloader: ^1.11.1
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.2
   flutter_slidable: ^3.0.0
   font_awesome_flutter: ^10.5.0
   google_fonts: ^5.1.0
   http: ^1.1.0
   intl: ^0.18.1
+  like_button: ^2.0.5
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.1.0
   permission_handler: ^10.4.3
@@ -42,6 +45,7 @@ flutter:
     - assests/mascot-blush.png
     - assests/th.jpeg
     - assests/hackathons.json
+    - assests/playstore.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

@@ -2,15 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:notex/home.dart';
 import 'package:notex/utils/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await FlutterDownloader.initialize(ignoreSsl: false);
   timeDilation = 1;
   await Firebase.initializeApp();
-
   runApp(const MainApp());
 }
 
