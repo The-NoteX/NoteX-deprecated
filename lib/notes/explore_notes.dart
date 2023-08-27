@@ -34,7 +34,10 @@ class _ExploreNotesState extends State<ExploreNotes> {
         toolbarHeight: 70,
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("pdf").snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection("pdf")
+            .orderBy('likes', descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none || ConnectionState.waiting:

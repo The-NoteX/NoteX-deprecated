@@ -85,3 +85,11 @@ Future<String> postComment(String comment, String docId) async {
     return "spam";
   }
 }
+
+Future likePost(String docId, bool liked, int likes) async {
+  if (liked) {
+    await firestore.collection('pdf').doc(docId).update({'likes': likes + 1});
+  } else {
+    await firestore.collection('pdf').doc(docId).update({'likes': likes - 1});
+  }
+}
