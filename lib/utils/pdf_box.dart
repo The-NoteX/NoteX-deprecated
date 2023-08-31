@@ -26,16 +26,20 @@ class PdfBox extends StatefulWidget {
 class _PdfBoxState extends State<PdfBox> {
   bool _liked = false;
   Future<String> downloadPdf() async {
+    Navigator.pop(context);
+    showSnackBar(context, "Starting Download");
+
     try {
       final dir = await AndroidXStorage().getDownloadsDirectory();
+      var flneName = widget.snap['subject'] + widget.snap['author'];
       await FlutterDownloader.enqueue(
+        fileName: flneName,
         url: widget.snap['pdfurl'],
         savedDir: dir!,
       );
-
-      return "true";
+      return "downloaded";
     } catch (e) {
-      return e.toString();
+      return showSnackBar(context, e.toString());
     }
   }
 
@@ -186,6 +190,7 @@ class _PdfBoxState extends State<PdfBox> {
                           await Permission.storage.request();
                           bool granted =
                               await Permission.storage.request().isGranted;
+
                           if (granted) {
                             // ignore: use_build_context_synchronously
                             showCupertinoDialog(
@@ -205,10 +210,6 @@ class _PdfBoxState extends State<PdfBox> {
                             );
 
                             await downloadPdf();
-                            // ignore: use_build_context_synchronously
-                            Navigator.pop(context);
-                            // ignore: use_build_context_synchronously
-                            showSnackBar(context, "Starting Download");
                           }
                         } else {
                           // ignore: use_build_context_synchronously
@@ -229,10 +230,6 @@ class _PdfBoxState extends State<PdfBox> {
                           );
 
                           await downloadPdf();
-                          // ignore: use_build_context_synchronously
-                          Navigator.pop(context);
-                          // ignore: use_build_context_synchronously
-                          showSnackBar(context, "Starting Download");
                         }
                       },
                       icon: const Icon(FontAwesomeIcons.download),
