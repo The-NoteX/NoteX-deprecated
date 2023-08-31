@@ -25,6 +25,20 @@ List<Widget> pages = [
   const Profile(),
 ];
 
+List<String> subjects = [
+  "Maths",
+  "Semi-conductors (theory)",
+  "Semi-conductors (lab)",
+  "Signals & Systems",
+  "Computer Organization & Architechture (lab)",
+  "Computer Organization & Architechture (theory)",
+  "Data Structure",
+  "Python (lab)",
+  "Python (theory)",
+  "Psychology",
+  "Economics",
+];
+
 late double hght;
 late double wdth;
 
