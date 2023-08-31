@@ -23,13 +23,12 @@ class PdfBox extends StatefulWidget {
   State<PdfBox> createState() => _PdfBoxState();
 }
 
-bool _liked = false;
-
 class _PdfBoxState extends State<PdfBox> {
+  bool _liked = false;
   Future<String> downloadPdf() async {
     try {
       final dir = await AndroidXStorage().getDownloadsDirectory();
-      final task = await FlutterDownloader.enqueue(
+      await FlutterDownloader.enqueue(
         url: widget.snap['pdfurl'],
         savedDir: dir!,
       );
@@ -137,7 +136,7 @@ class _PdfBoxState extends State<PdfBox> {
                   },
                   child: Container(
                     alignment: Alignment.centerLeft,
-                    width: 120,
+                    width: 110,
                     height: 45,
                     decoration: BoxDecoration(
                       color: Colors.white,

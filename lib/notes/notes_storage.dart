@@ -12,19 +12,18 @@ final firestore = FirebaseFirestore.instance;
 Future<String> uploadPdf(String tags, String filePath, String subject,
     int likes, String filename, String author, String sem) async {
   try {
-    final mountainsRef = storageRef.child("Notes");
-
+    final ref = storageRef.child("Notes");
     File file = File(filePath);
-
-    var upload =
-        await mountainsRef.child('author').child('filename').putFile(file);
     const uuid = Uuid();
     var namespace = Uuid.NAMESPACE_URL;
+
+    var upload = await ref.child(author).child(filename).putFile(file);
+
     var url = await FirebaseStorage.instance
         .ref()
         .child('Notes')
-        .child('author')
-        .child('filename')
+        .child(author)
+        .child(filename)
         .getDownloadURL();
 
     var urlSize = '$url?size=${upload.totalBytes}';
