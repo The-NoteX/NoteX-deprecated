@@ -17,6 +17,7 @@ dependencies:
   firebase_storage: ^11.2.5
   flutter:
     sdk: flutter
+  flutter_cached_pdfview: ^0.4.2
   flutter_downloader: ^1.11.1
   flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.2
@@ -32,6 +33,7 @@ dependencies:
   provider: ^6.0.5
   read_pdf_text: ^0.2.1
   share_plus: ^7.1.0
+  shared_preferences: ^2.2.1
   url_launcher: ^6.1.12
   uuid: ^3.0.7
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/register/branch.dart';
 import 'package:notex/utils/next_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/constants.dart';
 
 class Semester extends StatefulWidget {
@@ -115,11 +116,15 @@ class _SemesterState extends State<Semester> {
           // next
 
           NextButton(
-            onTap: () {
+            onTap: () async {
               if (_sem == 0) {
                 showSnackBar(context, "Plz select a semester");
               } else {
-                semester = _sem;
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setInt("semester", _sem);
+                prefs.getInt('semester');
+
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Branch()),
                 );

@@ -52,23 +52,26 @@ class _ExploreNotesState extends State<ExploreNotes> {
           ),
         ),
         flexibleSpace: SafeArea(
-          child: DropdownButton(
-            items: subjects.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            underline: Container(color: Colors.transparent),
-            iconSize: 50,
-            iconEnabledColor: Colors.cyan,
-            icon: Icon(MdiIcons.menuDown),
-            dropdownColor: Colors.white,
-            onChanged: (value) {
-              setState(() {
-                _subject = value!;
-              });
-            },
+          child: Align(
+            alignment: const Alignment(1, 0),
+            child: DropdownButton(
+              items: subjects.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              underline: Container(color: Colors.transparent),
+              iconSize: 50,
+              iconEnabledColor: Colors.cyan,
+              icon: Icon(MdiIcons.menuDown),
+              dropdownColor: Colors.white,
+              onChanged: (value) {
+                setState(() {
+                  _subject = value!;
+                });
+              },
+            ),
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 223, 223, 223),
@@ -88,19 +91,22 @@ class _ExploreNotesState extends State<ExploreNotes> {
           switch (snapshot.connectionState) {
             case ConnectionState.none || ConnectionState.waiting:
               return const LinearProgressIndicator(
-                color: Color.fromARGB(255, 0, 255, 8),
+                backgroundColor: Colors.transparent,
+                color: Colors.cyan,
               );
 
             default:
-              return ListWheelScrollView.useDelegate(
-                physics: const BouncingScrollPhysics(),
-                itemExtent: 275,
-                diameterRatio: 8,
-                childDelegate: ListWheelChildBuilderDelegate(
-                  childCount: snapshot.data!.docs.length,
-                  builder: (context, index) {
-                    return PdfBox(snap: snapshot.data!.docs[index].data());
-                  },
+              return Scrollbar(
+                child: ListWheelScrollView.useDelegate(
+                  physics: const BouncingScrollPhysics(),
+                  itemExtent: 275,
+                  diameterRatio: 8,
+                  childDelegate: ListWheelChildBuilderDelegate(
+                    childCount: snapshot.data!.docs.length,
+                    builder: (context, index) {
+                      return PdfBox(snap: snapshot.data!.docs[index].data());
+                    },
+                  ),
                 ),
               );
           }

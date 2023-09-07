@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:notex/navigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/constants.dart';
 
@@ -111,27 +113,36 @@ class _UpdateProfileState extends State<UpdateProfile> {
       growable: true,
     );
 
+    save() async {
+      if (_updatedName.text.trim().isEmpty) {
+        showSnackBar(context, "plz enter your name");
+      } else {
+        // save data to auth0 and local storage
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        // profile screen
+
+        await prefs.setString("username", _updatedName.text.trim());
+        await prefs.setInt("semester", _updatedSem.toInt());
+        await prefs.setString("branch", _updatedBranch);
+
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Navigation()),
+        );
+        // ignore: use_build_context_synchronously
+        showSnackBar(context, "updated");
+      }
+    }
+
     return Scaffold(
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 20, right: 20),
         child: FloatingActionButton(
             elevation: 10,
             backgroundColor: Colors.black,
-            onPressed: () async {
-              if (_updatedName.text.trim().isEmpty) {
-                showSnackBar(context, "plz enter your name");
-              } else {
-                // save data to auth0 and local storage
-
-                // profile screen
-                setState(() {
-                  username = _updatedName;
-                  semester = _updatedSem.toInt();
-                  branch = _updatedBranch;
-                });
-                Navigator.pop(context);
-              }
-            },
+            onPressed: save,
             child: Icon(MdiIcons.contentSaveAll)),
       ),
       appBar: AppBar(

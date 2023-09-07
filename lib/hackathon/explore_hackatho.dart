@@ -56,14 +56,7 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
                     final Uri url = Uri.parse(item['link']);
                     await launchUrl(url);
                   },
-                  child: HackBox(
-                    name: item['name'],
-                    link: item['link'],
-                    image: item['image'],
-                    date: item['date'],
-                    location: item['location'],
-                    mode: item['mode'],
-                  ),
+                  child: HackBox(snap: item),
                 ),
               ),
           ],
