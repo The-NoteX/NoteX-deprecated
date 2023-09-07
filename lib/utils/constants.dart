@@ -30,8 +30,8 @@ List<String> subjects = [
   "Semi-conductors (theory)",
   "Semi-conductors (lab)",
   "Signals & Systems",
-  "Computer Organization & Architechture (lab)",
-  "Computer Organization & Architechture (theory)",
+  "COA (lab)",
+  "COA (theory)",
   "Data Structure",
   "Python (lab)",
   "Python (theory)",
@@ -41,7 +41,3 @@ List<String> subjects = [
 
 late double hght;
 late double wdth;
-
-late dynamic username;
-late dynamic semester;
-late dynamic branch;

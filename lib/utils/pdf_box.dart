@@ -8,9 +8,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:notex/notes/comment.dart';
 import 'package:notex/notes/notes_storage.dart';
 import 'package:notex/utils/constants.dart';
+import 'package:notex/utils/pdf_view.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PdfBox extends StatefulWidget {
   final dynamic snap;
@@ -132,10 +132,15 @@ class _PdfBoxState extends State<PdfBox> {
                 // view pdf
 
                 GestureDetector(
-                  onTap: () {
-                    launchUrl(
-                      Uri.parse(widget.snap['pdfurl']),
-                      mode: LaunchMode.externalApplication,
+                  onTap: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PdfView(
+                          url: widget.snap['pdfurl'],
+                          snap: widget.snap,
+                        ),
+                      ),
                     );
                   },
                   child: Container(

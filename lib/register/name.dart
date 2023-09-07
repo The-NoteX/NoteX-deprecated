@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/register/semester.dart';
 import 'package:notex/utils/next_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/constants.dart';
 
 class Name extends StatefulWidget {
@@ -90,11 +91,14 @@ class _NameState extends State<Name> {
           //next
 
           NextButton(
-            onTap: () {
+            onTap: () async {
               if (_textController.text.trim().isEmpty) {
                 showSnackBar(context, "Plz enter your name");
               } else {
-                username = _textController.text.trim();
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setString("username", _textController.text.trim());
+
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => const Semester()));
               }

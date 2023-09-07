@@ -2,20 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HackBox extends StatefulWidget {
-  final dynamic name;
-  final dynamic link;
-  final dynamic image;
-  final dynamic date;
-  final dynamic location;
-  final dynamic mode;
+  final dynamic snap;
+
   const HackBox({
     super.key,
-    required this.name,
-    required this.link,
-    required this.image,
-    required this.date,
-    required this.location,
-    required this.mode,
+    required this.snap,
   });
 
   @override
@@ -48,7 +39,7 @@ class _HackBoxState extends State<HackBox> {
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   child: Image.network(
-                    widget.image,
+                    widget.snap['image'],
                     scale: 2.5,
                   ),
                 ),
@@ -56,7 +47,7 @@ class _HackBoxState extends State<HackBox> {
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Text(
-                  widget.date,
+                  widget.snap['date'],
                   style: GoogleFonts.manrope(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -71,7 +62,7 @@ class _HackBoxState extends State<HackBox> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  widget.name,
+                  widget.snap['name'],
                   style: GoogleFonts.manrope(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -81,14 +72,14 @@ class _HackBoxState extends State<HackBox> {
                   height: 60.0,
                 ),
                 Text(
-                  widget.location,
+                  widget.snap['location'],
                   style: GoogleFonts.manrope(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  widget.mode,
+                  widget.snap['mode'],
                   style: GoogleFonts.manrope(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

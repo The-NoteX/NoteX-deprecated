@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:notex/notes/notes_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UploadNotes extends StatefulWidget {
   const UploadNotes({super.key});
@@ -120,6 +121,48 @@ class _UploadNotesState extends State<UploadNotes> {
       growable: true,
     );
 
+    uploadFiles() async {
+      if (_topic.trim().isEmpty) {
+        showSnackBar(context, "Plz enter the subject");
+      } else if (_tag.isEmpty) {
+        showSnackBar(context, "Plz select a tag");
+      } else if (_sem == 0) {
+        showSnackBar(context, "Plz select the semester");
+      } else {
+        filePath = await pickFiles();
+        if (filePath!.isNotEmpty) {
+          setState(() {
+            _isSelected = true;
+          });
+        }
+      }
+    }
+
+    upload() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      String uploaded = await uploadPdf(
+        _tag.toString(),
+        filePath!,
+        _topic,
+        0,
+        _fileName.toString(),
+        prefs.getString('username')!,
+        _sem.toString(),
+      );
+
+      if (uploaded == "true") {
+        // ignore: use_build_context_synchronously
+        showSnackBar(context, "Uploaded");
+        setState(() {
+          _topic = "";
+          _tag = "";
+          _sem = 0;
+          _isSelected = false;
+        });
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -218,22 +261,7 @@ class _UploadNotesState extends State<UploadNotes> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
-                    onTap: () async {
-                      if (_topic.trim().isEmpty) {
-                        showSnackBar(context, "Plz enter the subject");
-                      } else if (_tag.isEmpty) {
-                        showSnackBar(context, "Plz select a tag");
-                      } else if (_sem == 0) {
-                        showSnackBar(context, "Plz select the semester");
-                      } else {
-                        filePath = await pickFiles();
-                        if (filePath!.isNotEmpty) {
-                          setState(() {
-                            _isSelected = true;
-                          });
-                        }
-                      }
-                    },
+                    onTap: uploadFiles,
                     child: _isSelected
                         ? const FaIcon(
                             FontAwesomeIcons.fileCircleCheck,
@@ -255,28 +283,7 @@ class _UploadNotesState extends State<UploadNotes> {
                         Colors.transparent,
                       ),
                       borderRadius: BorderRadius.circular(50),
-                      onTap: () async {
-                        String uploaded = await uploadPdf(
-                          _tag.toString(),
-                          filePath!,
-                          _topic,
-                          0,
-                          _fileName.toString(),
-                          username.toString(),
-                          _sem.toString(),
-                        );
-
-                        if (uploaded == "true") {
-                          // ignore: use_build_context_synchronously
-                          showSnackBar(context, "Uploaded");
-                          setState(() {
-                            _topic = "";
-                            _tag = "";
-                            _sem = 0;
-                            _isSelected = false;
-                          });
-                        }
-                      },
+                      onTap: upload,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(

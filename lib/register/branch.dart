@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:notex/navigation.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:notex/utils/next_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Branch extends StatefulWidget {
   const Branch({super.key});
@@ -108,11 +109,14 @@ class _BranchState extends State<Branch> {
           // next
 
           NextButton(
-            onTap: () {
+            onTap: () async {
               if (_branch.isEmpty) {
                 showSnackBar(context, "plz choose a branch");
               } else {
-                branch = _branch;
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setString("branch", _branch);
+
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Navigation()),
                 );
