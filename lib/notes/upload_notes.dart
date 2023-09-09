@@ -22,6 +22,7 @@ class _UploadNotesState extends State<UploadNotes> {
   bool _isSelected = false;
   String _topic = "";
   String dropdownvalue = subjects.first;
+  bool uploading = false;
 
   void onButtonPressed(String index) {
     setState(() {
@@ -139,32 +140,53 @@ class _UploadNotesState extends State<UploadNotes> {
     }
 
     upload() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      String uploaded = await uploadPdf(
-        _tag.toString(),
-        filePath!,
-        _topic,
-        0,
-        _fileName.toString(),
-        prefs.getString('username')!,
-        _sem.toString(),
-      );
-
-      if (uploaded == "true") {
-        // ignore: use_build_context_synchronously
-        showSnackBar(context, "Uploaded");
+      if (_topic.trim().isEmpty) {
+        showSnackBar(context, "Plz enter the subject");
+      } else if (_tag.isEmpty) {
+        showSnackBar(context, "Plz select a tag");
+      } else if (_sem == 0) {
+        showSnackBar(context, "Plz select the semester");
+      } else {
         setState(() {
-          _topic = "";
-          _tag = "";
-          _sem = 0;
-          _isSelected = false;
+          uploading = true;
         });
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        String uploaded = await uploadPdf(
+          _tag.toString(),
+          filePath!,
+          _topic,
+          0,
+          _fileName.toString(),
+          prefs.getString('username')!,
+          _sem.toString(),
+        );
+
+        if (uploaded == "true") {
+          // ignore: use_build_context_synchronously
+          showSnackBar(context, "Uploaded");
+          setState(() {
+            _topic = "";
+            _tag = "";
+            _sem = 0;
+            _isSelected = false;
+            uploading = false;
+          });
+        }
       }
     }
 
     return Scaffold(
       appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: const Size(0, 20),
+          child: uploading
+              ? const LinearProgressIndicator(
+                  backgroundColor: Colors.transparent,
+                  color: Colors.cyan,
+                )
+              : const SizedBox(),
+        ),
         title: const Padding(
           padding: EdgeInsets.only(top: 20, left: 10),
           child: Text(
@@ -178,7 +200,6 @@ class _UploadNotesState extends State<UploadNotes> {
         ),
         backgroundColor: const Color.fromARGB(255, 223, 223, 223),
         forceMaterialTransparency: true,
-        toolbarHeight: 70,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30, left: 25, right: 25),

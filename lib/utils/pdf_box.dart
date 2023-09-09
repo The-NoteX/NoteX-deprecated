@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:android_x_storage/android_x_storage.dart';
@@ -9,6 +11,7 @@ import 'package:notex/notes/comment.dart';
 import 'package:notex/notes/notes_storage.dart';
 import 'package:notex/utils/constants.dart';
 import 'package:notex/utils/pdf_view.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -25,22 +28,37 @@ class PdfBox extends StatefulWidget {
 
 class _PdfBoxState extends State<PdfBox> {
   bool _liked = false;
+
   Future<String> downloadPdf() async {
     Navigator.pop(context);
     showSnackBar(context, "Starting Download");
 
     try {
       final dir = await AndroidXStorage().getDownloadsDirectory();
-      var flneName = widget.snap['subject'] + widget.snap['author'];
+      var fileName = widget.snap['subject'] + "  " + widget.snap['author'];
       await FlutterDownloader.enqueue(
-        fileName: flneName,
+        fileName: fileName,
         url: widget.snap['pdfurl'],
         savedDir: dir!,
       );
       return "downloaded";
     } catch (e) {
+      // ignore: use_build_context_synchronously
       return showSnackBar(context, e.toString());
     }
+  }
+
+  Future share() async {
+    var response = await http.get(Uri.parse(widget.snap['pdfurl']));
+    var bytes = response.bodyBytes;
+    var fileName = widget.snap['subject'] + "  " + widget.snap['author'];
+    var tempDir = await getTemporaryDirectory();
+    var tempPath = tempDir.absolute.path;
+    var filePath = '$tempPath/$fileName.pdf';
+    var file = await File(filePath).writeAsBytes(bytes);
+    final files = <XFile>[];
+    files.add(XFile(filePath));
+    Share.shareXFiles(files);
   }
 
   @override
@@ -165,15 +183,14 @@ class _PdfBoxState extends State<PdfBox> {
                 ),
 
                 const SizedBox(width: 16),
+
                 // icons
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        Share.share(widget.snap['pdfurl']);
-                      },
+                      onPressed: share,
                       icon: Icon(MdiIcons.send),
                     ),
                     IconButton(

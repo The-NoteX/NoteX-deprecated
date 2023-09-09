@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:android_x_storage/android_x_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -34,8 +37,22 @@ class _PdfViewState extends State<PdfView> {
       );
       return "downloaded";
     } catch (e) {
+      // ignore: use_build_context_synchronously
       return showSnackBar(context, e.toString());
     }
+  }
+
+  Future share() async {
+    var response = await http.get(Uri.parse(widget.snap['pdfurl']));
+    var bytes = response.bodyBytes;
+    var fileName = widget.snap['subject'] + "  " + widget.snap['author'];
+    var tempDir = await getTemporaryDirectory();
+    var tempPath = tempDir.absolute.path;
+    var filePath = '$tempPath/$fileName.pdf';
+    var file = await File(filePath).writeAsBytes(bytes);
+    final files = <XFile>[];
+    files.add(XFile(filePath));
+    Share.shareXFiles(files);
   }
 
   @override
@@ -106,9 +123,7 @@ class _PdfViewState extends State<PdfView> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: IconButton(
-              onPressed: () {
-                Share.share(widget.snap['pdfurl']);
-              },
+              onPressed: share,
               icon: Icon(
                 MdiIcons.send,
                 color: Colors.black,
