@@ -61,3 +61,13 @@ git clone https://github.com/Tech-Emcees/NoteX.git
    ```sh
    flutter run
    ```
+# Our Team
+@TeeWrath
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+@bhaskar1001101
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+@ImanKalyanChakraborty
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+@shashwatdwi176
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+@RJ-04
