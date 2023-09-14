@@ -1,8 +1,16 @@
+<br><br>
 <div align="center">
- <img width="150" alt="notex" src="https://github.com/The-NoteX/NoteX/assets/117584718/c12f52ad-f789-4c35-a310-f42295d75864">
+ <img width="250" alt="notex" src="https://github.com/The-NoteX/NoteX/assets/117584718/c12f52ad-f789-4c35-a310-f42295d75864">
 
 # NoteX 
 An ***open source easy-to-use social media application*** for students to study, share resources, connect with each other, find opportunities and grow. A single platform to cater to all the needs of a student.
+<div align="center">
+ <a href="https://discord.gg/3cSBU6YZYy">Discord</a>
+ <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+ <a href="https://twitter.com/Note_X_">Twitter</a>
+ <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+ <a href="mailto:notexx176@gmail.com">Email</a>
+</div>
 </div>
 
 # Features 🦸‍♂️
@@ -61,6 +69,18 @@ git clone https://github.com/Tech-Emcees/NoteX.git
    ```sh
    flutter run
    ```
+
+# Contribution Guidelines 🗒️
+To contribute to this repository, follow the given steps :
+- Clone the repositoy in your local system.
+- Go through the application and find issues or features that you wish to add.
+- Go to issues and create your issue.
+- Wait for issue to be assigned.
+- Work on your issue
+- Create a pull request
+- Wait for it to be reviewed and merged
+- Congratulations !! You have just contributed to NoteX.
+
 # Our Team 🚀
 @TeeWrath
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -71,12 +91,3 @@ git clone https://github.com/Tech-Emcees/NoteX.git
 @shashwatdwi176
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 @RJ-04
-
-# Our Handles and Contacts 📫
-<div align="center">
- <a href="https://discord.gg/3cSBU6YZYy">Discord</a>
- <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
- <a href="https://twitter.com/Note_X_">Twitter</a>
- <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
- <a href="mailto:notexx176@gmail.com">Email</a>
-</div>
