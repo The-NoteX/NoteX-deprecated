@@ -1,5 +1,5 @@
 <div align="center">
- <img width="200" alt="notex" src="https://github.com/The-NoteX/NoteX/assets/117584718/c12f52ad-f789-4c35-a310-f42295d75864">
+ <img width="150" alt="notex" src="https://github.com/The-NoteX/NoteX/assets/117584718/c12f52ad-f789-4c35-a310-f42295d75864">
 
 # NoteX 
 An ***open source easy-to-use social media application*** for students to study, share resources, connect with each other, find opportunities and grow. A single platform to cater to all the needs of a student.
