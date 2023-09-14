@@ -46,10 +46,18 @@ It is a complete package for a college student who wants to manage his academics
 Follow the instructions to run the app in your own system
 
 1. Clone the repository using git clone <br>
-``` git clone https://github.com/Tech-Emcees/NoteX.git ```
+```sh
+git clone https://github.com/Tech-Emcees/NoteX.git
+```
 2. Change directory to the cloned repository <br>
-   ```cd NoteX/ ```
+   ```sh
+   cd NoteX/
+   ```
 3. Update dependencies <br>
-   ``` flutter pub get ```
+   ```sh
+   flutter pub get
+   ```
 4. Run the app <br>
-   ``` flutter run ```
+   ```sh
+   flutter run
+   ```
