@@ -53,7 +53,7 @@ class _ExploreNotesState extends State<ExploreNotes> {
         ),
         flexibleSpace: SafeArea(
           child: Align(
-            alignment: const Alignment(1, 0),
+            alignment: const Alignment(0.75, 0),
             child: DropdownButton(
               items: subjects.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
@@ -63,7 +63,7 @@ class _ExploreNotesState extends State<ExploreNotes> {
               }).toList(),
               underline: Container(color: Colors.transparent),
               iconSize: 50,
-              iconEnabledColor: Colors.cyan,
+              iconEnabledColor: Colors.black,
               icon: Icon(MdiIcons.menuDown),
               dropdownColor: Colors.white,
               onChanged: (value) {
@@ -96,18 +96,18 @@ class _ExploreNotesState extends State<ExploreNotes> {
               );
 
             default:
-              return Scrollbar(
-                child: ListWheelScrollView.useDelegate(
-                  physics: const BouncingScrollPhysics(),
-                  itemExtent: 275,
-                  diameterRatio: 8,
-                  childDelegate: ListWheelChildBuilderDelegate(
-                    childCount: snapshot.data!.docs.length,
-                    builder: (context, index) {
-                      return PdfBox(snap: snapshot.data!.docs[index].data());
-                    },
-                  ),
-                ),
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                cacheExtent: snapshot.data!.docs.length.toDouble(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    child: PdfBox(snap: snapshot.data!.docs[index].data()),
+                  );
+                },
               );
           }
         },

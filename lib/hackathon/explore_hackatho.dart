@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../utils/hack_box.dart';
 import 'api_hackathon.dart';
 
@@ -13,13 +12,19 @@ class ExploreHackathons extends StatefulWidget {
 
 class _ExploreHackathonsState extends State<ExploreHackathons> {
   List<dynamic> data = [];
+  bool gotData = false;
 
   @override
   void initState() {
     super.initState();
+    hackathonsData();
+  }
+
+  hackathonsData() async {
     fetchData().then((result) {
       setState(() {
         data = result;
+        gotData = true;
       });
     });
   }
@@ -28,6 +33,15 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: const Size(0, 10),
+          child: !gotData
+              ? const LinearProgressIndicator(
+                  backgroundColor: Colors.transparent,
+                  color: Colors.cyan,
+                )
+              : const SizedBox(),
+        ),
         title: const Padding(
           padding: EdgeInsets.only(top: 20, left: 10),
           child: Text(
@@ -44,24 +58,25 @@ class _ExploreHackathonsState extends State<ExploreHackathons> {
         toolbarHeight: 70,
       ),
       body: Center(
-          // for item in data make listTile
-          child: Scrollbar(
-        child: ListView(
-          children: [
-            for (var item in data)
-              Padding(
+        // for item in data make listTile
+        child: Scrollbar(
+          child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () async {
-                    final Uri url = Uri.parse(item['link']);
+                    final Uri url = Uri.parse(data[index]['link']);
                     await launchUrl(url);
                   },
-                  child: HackBox(snap: item),
+                  child: HackBox(snap: data[index]),
                 ),
-              ),
-          ],
+              );
+            },
+          ),
         ),
-      )),
+      ),
     );
   }
 }

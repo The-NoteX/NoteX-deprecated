@@ -30,7 +30,7 @@ class _CommentsState extends State<Comments> {
         title: Container(
           alignment: const Alignment(-0.25, -0.9),
           child: Text(
-            "Upload Notes",
+            "Comments",
             style: GoogleFonts.manrope(
               fontWeight: FontWeight.w500,
               color: Colors.black,

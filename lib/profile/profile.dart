@@ -86,8 +86,12 @@ class _ProfileState extends State<Profile> {
 
                 const Center(
                   child: CircleAvatar(
-                    radius: 100,
-                    backgroundImage: AssetImage("assests/th.jpeg"),
+                    backgroundColor: Colors.black,
+                    radius: 123,
+                    child: CircleAvatar(
+                      radius: 120,
+                      backgroundImage: AssetImage("assests/th.jpeg"),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),

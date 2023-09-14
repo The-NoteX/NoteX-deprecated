@@ -222,36 +222,44 @@ class _UploadNotesState extends State<UploadNotes> {
             const SizedBox(height: 60),
 
             // subject
-
-            Container(
-              decoration: BoxDecoration(border: Border.all(width: 0.5)),
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: DropdownButton(
-                items: subjects.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                itemHeight: 75,
-                value: dropdownvalue.trim(),
-                underline: Container(color: Colors.transparent),
-                isExpanded: true,
-                iconSize: 50,
-                iconEnabledColor: Colors.cyan,
-                icon: Icon(MdiIcons.menuDown),
-                dropdownColor: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                style: GoogleFonts.manrope(
-                  fontSize: 20,
-                  color: const Color.fromARGB(255, 61, 8, 8),
+            Text(
+              "Select Subject",
+              style: GoogleFonts.manrope(fontSize: 25),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(width: 0.5),
+                    borderRadius: const BorderRadius.all(Radius.circular(40))),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: DropdownButton(
+                  items: subjects.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  itemHeight: 60,
+                  value: dropdownvalue.trim(),
+                  underline: Container(color: Colors.transparent),
+                  isExpanded: true,
+                  iconSize: 50,
+                  iconEnabledColor: Colors.black,
+                  icon: Icon(MdiIcons.menuDown),
+                  dropdownColor: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  style: GoogleFonts.manrope(
+                    fontSize: 20,
+                    color: const Color.fromARGB(255, 61, 8, 8),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      _topic = value!;
+                      dropdownvalue = _topic;
+                    });
+                  },
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    _topic = value!;
-                    dropdownvalue = _topic;
-                  });
-                },
               ),
             ),
             const SizedBox(height: 40),

@@ -55,7 +55,7 @@ class _PdfBoxState extends State<PdfBox> {
     var tempDir = await getTemporaryDirectory();
     var tempPath = tempDir.absolute.path;
     var filePath = '$tempPath/$fileName.pdf';
-    var file = await File(filePath).writeAsBytes(bytes);
+    await File(filePath).writeAsBytes(bytes);
     final files = <XFile>[];
     files.add(XFile(filePath));
     Share.shareXFiles(files);
@@ -64,7 +64,7 @@ class _PdfBoxState extends State<PdfBox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 05),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

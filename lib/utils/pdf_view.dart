@@ -49,7 +49,7 @@ class _PdfViewState extends State<PdfView> {
     var tempDir = await getTemporaryDirectory();
     var tempPath = tempDir.absolute.path;
     var filePath = '$tempPath/$fileName.pdf';
-    var file = await File(filePath).writeAsBytes(bytes);
+    await File(filePath).writeAsBytes(bytes);
     final files = <XFile>[];
     files.add(XFile(filePath));
     Share.shareXFiles(files);
