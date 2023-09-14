@@ -61,7 +61,7 @@ git clone https://github.com/Tech-Emcees/NoteX.git
    ```sh
    flutter run
    ```
-# Our Team
+# Our Team 🚀
 @TeeWrath
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 @bhaskar1001101
@@ -71,3 +71,12 @@ git clone https://github.com/Tech-Emcees/NoteX.git
 @shashwatdwi176
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 @RJ-04
+
+# Our Handles and Contacts 📫
+<div align="center">
+ <a href="https://discord.gg/3cSBU6YZYy">Discord</a>
+ <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+ <a href="https://twitter.com/Note_X_">Twitter</a>
+ <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+ <a href="mailto:notexx176@gmail.com">Email</a>
+</div>
