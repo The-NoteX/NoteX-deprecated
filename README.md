@@ -18,19 +18,18 @@ It is a complete package for a college student who wants to manage his academics
  - Download resources on your device ⬇️
  - Cool user interface 😎
 
-# Tech Dependencies
+# Tech Dependencies 👨‍💻
 
-* Flutter
-* Firebase
-* Auth0
-* FastAPI
-* Python
-* Selenium
-* Docker
-* Support Vector Classifier
-* Postman
-* Figma
-* Canva
+<img width="100" src="https://github.com/The-NoteX/NoteX/assets/117584718/fd2377f1-8008-4c21-bdd8-ced63e9ce02e">
+<img width="150" src="https://firebase.google.com/static/downloads/brand-guidelines/PNG/logo-built_knockout.png">
+<img width="50" src="https://github.com/The-NoteX/NoteX/assets/117584718/23c6ec54-f481-4d95-a57f-8b0b909215e1">
+<img width="100" src="https://miro.medium.com/v2/resize:fit:1200/1*L6Eaowb7nHrLSiH41Tp4sA.png">
+<img width="100" src="https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png">
+<img width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Selenium_logo.svg/2560px-Selenium_logo.svg.png">
+<img width="100" src="https://github.com/The-NoteX/NoteX/assets/117584718/9a169ee8-23d0-48e2-abee-e87a2ba170c0">
+<img width="80" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSje5L1vWw0g0KM_eYdiS6lpUZu3j6Fhy9Uhw&usqp=CAU">
+<img width="100" src="https://www.pngkit.com/png/detail/206-2063294_the-postman-logo-is-available-in-png-svg.png">
+<img width="100" src="https://logodownload.org/wp-content/uploads/2022/12/figma-logo-0.png">
 
 # Build Instructions
 
