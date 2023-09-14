@@ -1,10 +1,19 @@
-# NoteX
+# NoteX 
 
-NoteX is a one-stop shop for college students where they can share notes with each other and get updates about upcoming hackathons.
+An ***open source easy-to-use social media application*** for students to study, share resources, connect with each other, find opportunities and grow. A single platform to cater to all the needs of a student.
 
-# Features
+# Features 🦸‍♂️
 
 It is a complete package for a college student who wants to manage his academics and ambitions efficiently.
+ - Share Notes and Resources with each other 📖
+ - Connect with each other 🤝
+ - Find information about 🕵️
+   - Upcoming Hackthons 💻
+     - With the help of our custom API
+   - Open Open source programs 👨‍💻
+   - Internship opportunities 💸
+ - Download resources on your device ⬇️
+ - Cool user interface 😎
 
 # Tech Dependencies
 
