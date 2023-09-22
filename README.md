@@ -21,7 +21,7 @@ It is a complete package for a college student who wants to manage his academics
  - Find information about 🕵️
    - Upcoming Hackthons 💻
      - With the help of our custom API
-   - Open Open source programs 👨‍💻
+   - Open Source programs 👨‍💻
    - Internship opportunities 💸
  - Download resources on your device ⬇️
  - Cool user interface 😎
