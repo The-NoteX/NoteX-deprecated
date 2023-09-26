@@ -36,4 +36,4 @@ def scrape_data():
 # scrape_data()
 while(1):
     scrape_data()
-    time.sleep(86400)
+    time.sleep(86399)
