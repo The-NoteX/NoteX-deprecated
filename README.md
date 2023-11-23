@@ -51,21 +51,29 @@ It is a complete package for a college student who wants to manage his academics
 
 # Build Instructions 🛠️
 
+
+### ***Note: The application is built for android mobile phones only as of now*** <br>
 Follow the instructions to run the app in your own system
 
-1. Clone the repository using git clone <br>
+1. Make sure flutter is properly installed in your system, if not, follow this [link](https://docs.flutter.dev/get-started/install?gclid=CjwKCAiAjfyqBhAsEiwA-UdzJPDOcXFR30TuY-TVwM19SHi-ihNRtcdnR9xNdyLFC7E8z8I1pPHfnRoCIygQAvD_BwE&gclsrc=aw.ds)
+   <br> then run following command once in your terminal
+```sh
+flutter doctor
+```
+If all the necessary softwares are installed in your system, you can proceed with the following, otherwise install them first then rerun the above command and go about it. <br><br>
+2. Clone the repository using git clone <br>
 ```sh
 git clone https://github.com/Tech-Emcees/NoteX.git
 ```
-2. Change directory to the cloned repository <br>
+3. Change directory to the cloned repository <br>
    ```sh
    cd NoteX/
    ```
-3. Update dependencies <br>
+4. Update dependencies <br>
    ```sh
    flutter pub get
    ```
-4. Run the app <br>
+5. Run the app <br>
    ```sh
    flutter run
    ```
