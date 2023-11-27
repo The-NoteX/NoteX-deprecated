@@ -100,13 +100,7 @@ class _ExploreNotesState extends State<ExploreNotes> {
                 itemCount: snapshot.data!.docs.length,
                 cacheExtent: snapshot.data!.docs.length.toDouble(),
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0,
-                      vertical: 10,
-                    ),
-                    child: PdfBox(snap: snapshot.data!.docs[index].data()),
-                  );
+                  return PdfBox(snap: snapshot.data!.docs[index].data());
                 },
               );
           }
