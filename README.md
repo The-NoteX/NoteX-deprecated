@@ -90,12 +90,12 @@ To contribute to this repository, follow the given steps :
 - Congratulations !! You have just contributed to NoteX.
 
 # Our Team 🚀
-@TeeWrath
+<a href="https://github.com/TeeWrath">@TeeWrath</a>
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-@bhaskar1001101
+<a href="https://github.com/bhaskar1001101">@bhaskar1001101</a>
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-@ImanKalyanChakraborty
+<a href="https://github.com/ImanKalyanChakraborty">@ImanKalyanChakraborty</a>
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-@shashwatdwi176
+<a href="https://github.com/shashwatdwi176">@shashwatdwi176</a>
 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-@RJ-04
+<a href="https://github.com/RJ-04">@RJ-04</a>
